@@ -64,16 +64,17 @@ interface DragAndDropBoardProps {
 }
 
 export const DragAndDropBoard: React.FC<DragAndDropBoardProps> = ({ draggables, dropZones, onComplete }) => {
+  const [isMounted, setIsMounted] = React.useState(false);
   const [matches, setMatches] = useState<Record<string, string>>({}); // dropZoneId -> draggableLabel
+
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
     if (!over) return;
-
-    // Check if the drop was valid (for this specific game rules, any hazard can be placed in any empty zone 
-    // since the original worksheet asked them to 'complete the boxes'. If strict mapping is required, we check expectedDraggableId).
     
-    // For this vertical slice, we allow them to drop any hazard into a box to "complete" the worksheet visually.
     const draggable = draggables.find(d => d.id === active.id);
     if (draggable && !matches[over.id]) {
       const newMatches = { ...matches, [over.id]: draggable.label };
@@ -86,6 +87,10 @@ export const DragAndDropBoard: React.FC<DragAndDropBoardProps> = ({ draggables, 
   };
 
   const isMatched = (id: string) => Object.values(matches).includes(draggables.find(d => d.id === id)?.label || '');
+
+  if (!isMounted) {
+    return <div className="p-6 bg-card rounded-lg shadow-sm border border-border h-64 flex items-center justify-center text-foreground/50">Loading Challenge...</div>;
+  }
 
   return (
     <DndContext onDragEnd={handleDragEnd}>
