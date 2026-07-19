@@ -8,9 +8,13 @@ datasource db {
 }
 
 model Student {
-  id        String    @id @default(uuid())
-  createdAt DateTime  @default(now())
-  sessions  Session[]
+  id         String    @id @default(uuid())
+  joinCode   String?   @unique
+  fullName   String?
+  tutorGroup String?
+  email      String?
+  createdAt  DateTime  @default(now())
+  sessions   Session[]
 }
 
 model Session {
@@ -21,7 +25,7 @@ model Session {
   startTime DateTime @default(now())
   endTime   DateTime?
   
-  student   Student  @relation(fields: [studentId], references: [id])
+  student   Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
   metrics   QuestionMetric[]
 }
 
@@ -33,5 +37,5 @@ model QuestionMetric {
   timeTakenSeconds  Int      @default(0)
   isCorrect         Boolean  @default(false)
   
-  session           Session  @relation(fields: [sessionId], references: [id])
+  session           Session  @relation(fields: [sessionId], references: [id], onDelete: Cascade)
 }

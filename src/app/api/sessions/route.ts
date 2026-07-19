@@ -1,18 +1,22 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { getStudentSession } from '@/lib/auth';
 
 export async function POST(request: Request) {
   try {
+    const studentSession = await getStudentSession();
+    
+    if (!studentSession?.studentId) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     const body = await request.json();
     const { moduleId, domain } = body;
 
-    // 1. Create an anonymous student for this session
-    const student = await prisma.student.create({ data: {} });
-
-    // 2. Create the session
+    // Create the session for the logged-in student
     const session = await prisma.session.create({
       data: {
-        studentId: student.id,
+        studentId: studentSession.studentId as string,
         moduleId: moduleId || 'unknown',
         domain: domain || 'unknown',
       },

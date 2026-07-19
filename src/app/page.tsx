@@ -1,65 +1,62 @@
-import Image from "next/image";
+import { getStudentSession } from '@/lib/auth';
+import { prisma } from '@/lib/prisma';
+import { redirect } from 'next/navigation';
+import Link from 'next/link';
 
-export default function Home() {
+export default async function Home() {
+  const session = await getStudentSession();
+  
+  if (!session?.studentId) {
+    redirect('/login');
+  }
+
+  const student = await prisma.student.findUnique({
+    where: { id: session.studentId as string }
+  });
+
+  if (!student) redirect('/login');
+  if (!student.fullName) redirect('/onboarding');
+
+  // Hardcode available modules for now
+  const modules = [
+    { id: 'ws1', title: 'Hazard Warning Diamonds' },
+    { id: 'ws3', title: 'Engineering Drawings' },
+    { id: 'ws4', title: 'ISO Fluid Power Symbols' },
+    { id: 'ws5', title: 'BS3939 Circuit Symbols' },
+    { id: 'ws6', title: 'Types of Fire Extinguishers' },
+    { id: 'ws7', title: 'PPE (Personal Protective Equipment)' },
+    { id: 'ws8', title: 'Mechanical Handling Equipment' },
+    { id: 'ws9', title: 'Maximising Materials (Q&A)' },
+    { id: 'ws10', title: 'Files (Q&A)' },
+  ];
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen bg-background py-12 px-4">
+      <div className="max-w-4xl mx-auto space-y-8">
+        <div className="flex justify-between items-center bg-card p-6 rounded-lg border border-border shadow-sm">
+          <div>
+            <h1 className="text-2xl font-bold">Welcome back, {student.fullName}</h1>
+            <p className="text-sm text-foreground/60">Tutor Group: {student.tutorGroup || 'N/A'}</p>
+          </div>
+          <Link href="/profile" className="bg-secondary text-secondary-foreground py-2 px-4 rounded-md font-medium hover:bg-secondary/80">
+            My Profile
+          </Link>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <h2 className="text-xl font-bold">Available Modules</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {modules.map(mod => (
+            <Link 
+              key={mod.id} 
+              href={`/modules/engineering/${mod.id}`}
+              className="bg-card p-6 rounded-lg border border-border hover:border-primary hover:shadow-md transition-all flex flex-col justify-between h-32 group"
+            >
+              <h3 className="font-semibold text-lg group-hover:text-primary transition-colors">{mod.title}</h3>
+              <span className="text-sm text-primary font-medium mt-4">Start Module &rarr;</span>
+            </Link>
+          ))}
         </div>
-      </main>
+      </div>
     </div>
   );
 }
