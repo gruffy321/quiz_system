@@ -44,31 +44,7 @@ export function CatchGame({ basketLabel, basketImageUrl, items, onComplete }: Ca
   const keysPressed = useRef({ left: false, right: false });
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Filter out items that are targets and already caught
-  const getAvailableItems = useCallback(() => {
-    return items.filter(item => !(item.isTarget && caughtTargets.includes(item.id)));
-  }, [items, caughtTargets]);
-
   const targetCount = items.filter(i => i.isTarget).length;
-
-  const spawnItem = useCallback((time: number) => {
-    if (time - lastSpawnTime.current > 2000) { // Spawn every 2 seconds
-      const available = getAvailableItems();
-      if (available.length > 0) {
-        const randomItem = available[Math.floor(Math.random() * available.length)];
-        const newX = Math.random() * (GAME_WIDTH - ITEM_SIZE);
-        
-        setActiveItems(prev => [...prev, {
-          id: Math.random().toString(36).substr(2, 9),
-          data: randomItem,
-          x: newX,
-          y: -ITEM_SIZE,
-          speed: 2 + Math.random() * 2 // Fall speed between 2 and 4
-        }]);
-        lastSpawnTime.current = time;
-      }
-    }
-  }, [getAvailableItems]);
 
   const updatePhysics = useCallback((time: number) => {
     if (!isPlaying || pausedItem || isGameOver) return;
@@ -87,10 +63,34 @@ export function CatchGame({ basketLabel, basketImageUrl, items, onComplete }: Ca
       return prev + diff * 0.15; // 0.15 is the smoothing factor
     });
 
-    spawnItem(time);
-
     setActiveItems(prevItems => {
       let nextItems = [...prevItems];
+
+      // 1. Spawning Logic (Moved inside to check against current active items)
+      if (time - lastSpawnTime.current > 2000) {
+        const available = items.filter(item => {
+          // Don't spawn targets that are already caught
+          if (item.isTarget && caughtTargets.includes(item.id)) return false;
+          // Prevent duplicates of any item currently on screen
+          if (nextItems.some(active => active.data.id === item.id)) return false;
+          return true;
+        });
+
+        if (available.length > 0) {
+          const randomItem = available[Math.floor(Math.random() * available.length)];
+          const newX = Math.random() * (GAME_WIDTH - ITEM_SIZE);
+          nextItems.push({
+            id: Math.random().toString(36).substr(2, 9),
+            data: randomItem,
+            x: newX,
+            y: -ITEM_SIZE,
+            speed: 2 + Math.random() * 2 // Fall speed between 2 and 4
+          });
+          lastSpawnTime.current = time;
+        }
+      }
+
+      // 2. Physics & Collision Logic
       let collidedIndex = -1;
       let missedTargetIndex = -1;
 
@@ -136,7 +136,7 @@ export function CatchGame({ basketLabel, basketImageUrl, items, onComplete }: Ca
     });
 
     requestRef.current = requestAnimationFrame(updatePhysics);
-  }, [isPlaying, pausedItem, isGameOver, spawnItem]);
+  }, [isPlaying, pausedItem, isGameOver, items, caughtTargets, basketX]);
 
   const handleMissedTarget = (item: CatchItem) => {
     setPausedItem({ data: item, isCaught: false });
