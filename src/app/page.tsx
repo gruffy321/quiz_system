@@ -28,12 +28,16 @@ export default async function Home() {
       const filePath = path.join(modulesDir, file);
       const content = fs.readFileSync(filePath, 'utf8');
       const json = JSON.parse(content);
-      return { id: json.id, title: json.title };
+      const fileId = file.replace('.json', '');
+      return { 
+        id: json.id || json.moduleId || fileId, 
+        title: json.title 
+      };
     })
     .sort((a, b) => {
       // Sort numerically by the WS number (e.g., ws1, ws2, ws10)
-      const numA = parseInt(a.id.replace(/\D/g, ''), 10);
-      const numB = parseInt(b.id.replace(/\D/g, ''), 10);
+      const numA = parseInt(a.id.replace(/\D/g, '') || '0', 10);
+      const numB = parseInt(b.id.replace(/\D/g, '') || '0', 10);
       return numA - numB;
     });
 
