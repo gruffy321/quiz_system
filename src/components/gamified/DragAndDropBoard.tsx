@@ -10,7 +10,7 @@ interface DraggableItemProps {
 }
 
 const DraggableItem = ({ id, label, isMatched }: DraggableItemProps) => {
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({ id, disabled: isMatched });
+  const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({ id, disabled: isMatched });
   const style = transform ? { transform: `translate3d(${transform.x}px, ${transform.y}px, 0)` } : undefined;
 
   return (
