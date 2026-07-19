@@ -31,26 +31,35 @@ const DraggableItem = ({ id, label, isMatched }: DraggableItemProps) => {
 interface DropZoneProps {
   id: string;
   matchedLabel?: string;
+  imageUrl?: string;
 }
 
-const DropZone = ({ id, matchedLabel }: DropZoneProps) => {
+const DropZone = ({ id, matchedLabel, imageUrl }: DropZoneProps) => {
   const { isOver, setNodeRef } = useDroppable({ id });
 
   return (
-    <div
-      ref={setNodeRef}
-      className={`p-4 m-2 w-40 h-24 border-2 border-dashed rounded-md flex items-center justify-center text-sm text-center transition-colors ${
-        isOver ? 'bg-blue-50 border-blue-400' : 'bg-gray-50 border-gray-300'
-      } ${matchedLabel ? 'bg-green-50 border-green-400 text-green-700 font-medium' : 'text-gray-400'}`}
-    >
-      {matchedLabel || 'Drop Hazard Here'}
+    <div className="flex flex-col items-center gap-2 m-2">
+      {imageUrl && (
+        <div className="w-24 h-24 flex items-center justify-center bg-white border-2 border-red-500 rounded-sm">
+          {/* We will use a standard img tag here, relying on public/ folder static assets */}
+          <img src={imageUrl} alt="Hazard Symbol" className="w-20 h-20 object-contain" />
+        </div>
+      )}
+      <div
+        ref={setNodeRef}
+        className={`p-4 w-40 h-16 border-2 border-dashed rounded-md flex items-center justify-center text-sm text-center transition-colors ${
+          isOver ? 'bg-primary/10 border-primary' : 'bg-card border-border'
+        } ${matchedLabel ? 'bg-green-50 border-green-400 text-green-700 font-medium dark:bg-green-900/30 dark:border-green-600 dark:text-green-400' : 'text-foreground/50'}`}
+      >
+        {matchedLabel || 'Drop Label Here'}
+      </div>
     </div>
   );
 };
 
 interface DragAndDropBoardProps {
   draggables: { id: string; label: string }[];
-  dropZones: { id: string; expectedDraggableId: string }[];
+  dropZones: { id: string; expectedDraggableId: string; imageUrl?: string }[];
   onComplete: () => void;
 }
 

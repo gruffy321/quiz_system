@@ -16,7 +16,7 @@ export interface MultipleChoiceQuestion extends BaseQuestion {
 export interface DragAndDropQuestion extends BaseQuestion {
   type: 'drag_and_drop';
   draggables: { id: string; label: string }[];
-  dropZones: { id: string; expectedDraggableId: string }[];
+  dropZones: { id: string; expectedDraggableId: string; imageUrl?: string }[];
 }
 
 export type Question = MultipleChoiceQuestion | DragAndDropQuestion;

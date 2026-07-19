@@ -50,39 +50,48 @@
       "dropZones": [
         {
           "id": "drop_0",
-          "expectedDraggableId": "drag_0"
+          "expectedDraggableId": "drag_0",
+          "imageUrl": "/assets/hazards/toxic.svg"
         },
         {
           "id": "drop_1",
-          "expectedDraggableId": "drag_1"
+          "expectedDraggableId": "drag_1",
+          "imageUrl": "/assets/hazards/explosive.svg"
         },
         {
           "id": "drop_2",
-          "expectedDraggableId": "drag_2"
+          "expectedDraggableId": "drag_2",
+          "imageUrl": "/assets/hazards/oxidising.svg"
         },
         {
           "id": "drop_3",
-          "expectedDraggableId": "drag_3"
+          "expectedDraggableId": "drag_3",
+          "imageUrl": "/assets/hazards/corrosive.svg"
         },
         {
           "id": "drop_4",
-          "expectedDraggableId": "drag_4"
+          "expectedDraggableId": "drag_4",
+          "imageUrl": "/assets/hazards/dangerous_to_the_environment.svg"
         },
         {
           "id": "drop_5",
-          "expectedDraggableId": "drag_5"
+          "expectedDraggableId": "drag_5",
+          "imageUrl": "/assets/hazards/flammable.svg"
         },
         {
           "id": "drop_6",
-          "expectedDraggableId": "drag_6"
+          "expectedDraggableId": "drag_6",
+          "imageUrl": "/assets/hazards/long_term_health_hazard.svg"
         },
         {
           "id": "drop_7",
-          "expectedDraggableId": "drag_7"
+          "expectedDraggableId": "drag_7",
+          "imageUrl": "/assets/hazards/gas_under_pressure.svg"
         },
         {
           "id": "drop_8",
-          "expectedDraggableId": "drag_8"
+          "expectedDraggableId": "drag_8",
+          "imageUrl": "/assets/hazards/caution.svg"
         }
       ]
     },

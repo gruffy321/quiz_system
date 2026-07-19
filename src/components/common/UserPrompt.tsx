@@ -31,9 +31,9 @@ export const UserPrompt: React.FC<UserPromptProps> = ({ promptText, onSubmit, on
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+    <div className="bg-card text-foreground p-6 rounded-lg shadow-md border border-border">
       <form onSubmit={handleSubmit}>
-        <label className="block text-sm font-medium text-gray-700 mb-2">{promptText}</label>
+        <label className="block text-sm font-medium mb-2">{promptText}</label>
         <input
           type="text"
           value={input}

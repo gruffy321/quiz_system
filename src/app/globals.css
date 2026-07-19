@@ -1,26 +1,69 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-fg);
+  --color-card: var(--card-bg);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Default Light Theme */
+    --bg: #ffffff;
+    --fg: #0f172a;
+    --border: #e2e8f0;
+    --primary: #3b82f6; /* Blue 500 */
+    --primary-fg: #ffffff;
+    --card-bg: #f8fafc;
+  }
+
+  [data-theme='dark'] {
+    --bg: #0f172a;
+    --fg: #f8fafc;
+    --border: #334155;
+    --primary: #3b82f6;
+    --primary-fg: #ffffff;
+    --card-bg: #1e293b;
+  }
+
+  [data-theme='protanopia'] {
+    /* Avoid reds, emphasize blue/yellow contrast */
+    --bg: #ffffff;
+    --fg: #111827;
+    --border: #d1d5db;
+    --primary: #0284c7; /* Sky 600 */
+    --primary-fg: #ffffff;
+    --card-bg: #f3f4f6;
+  }
+
+  [data-theme='deuteranopia'] {
+    /* Avoid greens, emphasize blue/yellow contrast */
+    --bg: #ffffff;
+    --fg: #111827;
+    --border: #d1d5db;
+    --primary: #2563eb; /* Blue 600 */
+    --primary-fg: #ffffff;
+    --card-bg: #f3f4f6;
+  }
+
+  [data-theme='tritanopia'] {
+    /* Avoid blue/yellow, emphasize red/teal contrast */
+    --bg: #ffffff;
+    --fg: #111827;
+    --border: #d1d5db;
+    --primary: #dc2626; /* Red 600 */
+    --primary-fg: #ffffff;
+    --card-bg: #f3f4f6;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
 }

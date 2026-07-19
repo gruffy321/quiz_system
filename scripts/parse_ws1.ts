@@ -44,7 +44,11 @@ function parseWS1() {
         prompt: "Complete the boxes with the correct hazards.",
         points: 9,
         draggables: hazards.map((h, i) => ({ id: `drag_${i}`, label: h })),
-        dropZones: hazards.map((h, i) => ({ id: `drop_${i}`, expectedDraggableId: `drag_${i}` }))
+        dropZones: hazards.map((h, i) => ({ 
+          id: `drop_${i}`, 
+          expectedDraggableId: `drag_${i}`,
+          imageUrl: `/assets/hazards/${h.toLowerCase().replace(/ /g, '_')}.svg`
+        }))
       },
       {
         id: "q2_disposal",
