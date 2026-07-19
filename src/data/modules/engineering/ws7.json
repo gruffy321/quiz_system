@@ -1,0 +1,36 @@
+{
+  "id": "ws7",
+  "domain": "engineering",
+  "title": "Manual Handling (Q&A)",
+  "description": "Learn the principles of manual handling, safe lifting techniques, and moving equipment.",
+  "questions": [
+    {
+      "id": "q1_training",
+      "type": "fill_in_the_blank",
+      "prompt": "Briefly describe some of the reasons why companies provide manual handling training.",
+      "points": 5,
+      "expectedKeywords": ["prevent", "injury", "law", "legislation", "safe", "back"]
+    },
+    {
+      "id": "q2_pallet_truck",
+      "type": "fill_in_the_blank",
+      "prompt": "Briefly explain when you would use a pallet truck.",
+      "points": 5,
+      "expectedKeywords": ["heavy", "load", "pallet", "move", "distance", "floor"]
+    },
+    {
+      "id": "q3_sack_barrow",
+      "type": "fill_in_the_blank",
+      "prompt": "Briefly explain when you would use a sack barrow/truck.",
+      "points": 5,
+      "expectedKeywords": ["boxes", "sacks", "awkward", "load", "upright"]
+    },
+    {
+      "id": "q4_lifting_technique",
+      "type": "fill_in_the_blank",
+      "prompt": "Describe the correct technique for moving a box from the ground to a table.",
+      "points": 5,
+      "expectedKeywords": ["bend", "knees", "straight", "back", "grip", "close", "lift", "legs"]
+    }
+  ]
+}

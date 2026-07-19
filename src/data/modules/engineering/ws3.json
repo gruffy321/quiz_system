@@ -1,0 +1,62 @@
+{
+  "id": "ws3",
+  "domain": "engineering",
+  "title": "Engineering Drawings (Q&A)",
+  "description": "Identify different drawing types and understand dimensions, datums, and charts.",
+  "questions": [
+    {
+      "id": "q1_drawing_types",
+      "type": "drag_and_drop",
+      "prompt": "Identify the drawing type for each image.",
+      "points": 10,
+      "draggables": [
+        { "id": "isometric", "label": "Isometric" },
+        { "id": "third_angle", "label": "Third Angle Projection" },
+        { "id": "assembly", "label": "Assembly Drawing" },
+        { "id": "general", "label": "General Arrangement" },
+        { "id": "circuit", "label": "Circuit Diagram" },
+        { "id": "wiring", "label": "Wiring Diagram" },
+        { "id": "block", "label": "Block Diagram" },
+        { "id": "fluid", "label": "Fluid Power Diagram" }
+      ],
+      "dropZones": [
+        { "id": "dz_iso", "expectedDraggableId": "isometric", "imageUrl": "/assets/engineering/ws3/img_1_2.jpeg" },
+        { "id": "dz_third", "expectedDraggableId": "third_angle", "imageUrl": "/assets/engineering/ws3/img_1_3.png" },
+        { "id": "dz_assm", "expectedDraggableId": "assembly", "imageUrl": "/assets/engineering/ws3/img_2_5.png" },
+        { "id": "dz_gen", "expectedDraggableId": "general", "imageUrl": "/assets/engineering/ws3/img_2_6.jpeg" },
+        { "id": "dz_circ", "expectedDraggableId": "circuit", "imageUrl": "/assets/engineering/ws3/img_2_7.png" },
+        { "id": "dz_wire", "expectedDraggableId": "wiring", "imageUrl": "/assets/engineering/ws3/img_3_9.png" },
+        { "id": "dz_block", "expectedDraggableId": "block", "imageUrl": "/assets/engineering/ws3/img_3_10.png" },
+        { "id": "dz_fluid", "expectedDraggableId": "fluid", "imageUrl": "/assets/engineering/ws3/img_3_11.png" }
+      ]
+    },
+    {
+      "id": "q2_tap_chart",
+      "type": "fill_in_the_blank",
+      "prompt": "What would a Tap/Drill chart be used for?",
+      "points": 5,
+      "expectedKeywords": ["select", "drill", "size", "tap", "thread", "hole"]
+    },
+    {
+      "id": "q3_bend_allowance",
+      "type": "fill_in_the_blank",
+      "prompt": "What would a Bend Allowance formula be used for?",
+      "points": 5,
+      "expectedKeywords": ["calculate", "length", "material", "sheet", "metal", "bending"]
+    },
+    {
+      "id": "q4_tech_info",
+      "type": "fill_in_the_blank",
+      "prompt": "Why might technical information be presented in different ways?",
+      "points": 5,
+      "expectedKeywords": ["audience", "purpose", "detail", "clarity", "understand"]
+    },
+    {
+      "id": "q5_datum",
+      "type": "fill_in_the_blank",
+      "prompt": "Why is it important to use a fixed common reference point (datum) when dimensioning a drawing?",
+      "points": 5,
+      "expectedKeywords": ["accuracy", "accumulation", "errors", "tolerance", "measure", "consistent"]
+    }
+  ]
+}

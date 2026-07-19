@@ -1,0 +1,71 @@
+{
+  "id": "ws4",
+  "domain": "engineering",
+  "title": "Health & Safety Questions (Q&A)",
+  "description": "Responsibilities, risks, control measures, and safe storage.",
+  "questions": [
+    {
+      "id": "q1_hazards",
+      "type": "fill_in_the_blank",
+      "prompt": "Describe your responsibilities for spotting hazards in the workplace.",
+      "points": 5,
+      "expectedKeywords": ["identify", "report", "supervisor", "remove", "safe"]
+    },
+    {
+      "id": "q2_risk_assessments",
+      "type": "fill_in_the_blank",
+      "prompt": "Describe your responsibilities regarding risk assessments.",
+      "points": 5,
+      "expectedKeywords": ["read", "follow", "guidelines", "understand", "comply"]
+    },
+    {
+      "id": "q3_coshh",
+      "type": "fill_in_the_blank",
+      "prompt": "Describe your responsibilities regarding COSHH requirements.",
+      "points": 5,
+      "expectedKeywords": ["store", "handle", "chemicals", "safely", "data sheet", "spill"]
+    },
+    {
+      "id": "q4_tool_risks",
+      "type": "fill_in_the_blank",
+      "prompt": "Describe the risks associated with tools in the working environment.",
+      "points": 5,
+      "expectedKeywords": ["injury", "cuts", "damage", "blunt", "incorrect"]
+    },
+    {
+      "id": "q5_tool_safety_info",
+      "type": "fill_in_the_blank",
+      "prompt": "What sources of information are available for tool safety?",
+      "points": 5,
+      "expectedKeywords": ["manual", "instructions", "supervisor", "manufacturer", "guide"]
+    },
+    {
+      "id": "q6_control_lockoff",
+      "type": "fill_in_the_blank",
+      "prompt": "Give an example of when you would use lock off devices.",
+      "points": 5,
+      "expectedKeywords": ["maintenance", "repair", "isolate", "power", "electrical"]
+    },
+    {
+      "id": "q7_control_fume",
+      "type": "fill_in_the_blank",
+      "prompt": "Give an example of when you would use fume extraction.",
+      "points": 5,
+      "expectedKeywords": ["welding", "soldering", "chemicals", "dust", "gas"]
+    },
+    {
+      "id": "q8_tool_storage",
+      "type": "fill_in_the_blank",
+      "prompt": "Explain why tools should be stored in an appropriate manner (e.g. on a tool board).",
+      "points": 5,
+      "expectedKeywords": ["damage", "find", "safe", "prevent", "loss", "organise"]
+    },
+    {
+      "id": "q9_drawings_storage",
+      "type": "fill_in_the_blank",
+      "prompt": "Why should drawings be returned after use and stored properly?",
+      "points": 5,
+      "expectedKeywords": ["damage", "dirt", "loss", "reference", "clean", "safe"]
+    }
+  ]
+}

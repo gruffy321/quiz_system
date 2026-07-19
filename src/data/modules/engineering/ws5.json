@@ -1,0 +1,64 @@
+{
+  "id": "ws5",
+  "domain": "engineering",
+  "title": "Safety Procedures (PD)",
+  "description": "Fire alarms, first aid, dangerous occurrences, and firefighting procedures.",
+  "questions": [
+    {
+      "id": "q1_fire_alarm",
+      "type": "fill_in_the_blank",
+      "prompt": "List the steps to be taken if the fire alarm sounds whilst you are using a machine.",
+      "points": 5,
+      "expectedKeywords": ["stop", "isolate", "power", "leave", "calm", "assembly", "point"]
+    },
+    {
+      "id": "q2_reporting",
+      "type": "fill_in_the_blank",
+      "prompt": "Explain why it is important to use appropriate fire escape routes and report to your assembly point.",
+      "points": 5,
+      "expectedKeywords": ["safe", "headcount", "accounted", "rescue", "clear"]
+    },
+    {
+      "id": "q3_first_aid",
+      "type": "fill_in_the_blank",
+      "prompt": "Describe the first aid facilities within your specified engineering area.",
+      "points": 5,
+      "expectedKeywords": ["box", "kit", "eyewash", "station", "first aider"]
+    },
+    {
+      "id": "q4_dangerous",
+      "type": "fill_in_the_blank",
+      "prompt": "State at least three dangerous occurrences or malfunctions which should be reported.",
+      "points": 5,
+      "expectedKeywords": ["spill", "leak", "electrical", "guard", "broken", "fire", "smoke"]
+    },
+    {
+      "id": "q5_fire_action",
+      "type": "fill_in_the_blank",
+      "prompt": "Summarise what action should be taken on discovering a fire.",
+      "points": 5,
+      "expectedKeywords": ["alarm", "shout", "call", "evacuate", "tackle", "trained"]
+    },
+    {
+      "id": "q6_extinguishers",
+      "type": "fill_in_the_blank",
+      "prompt": "Summarise the policy regarding fire extinguishers and fire blankets.",
+      "points": 5,
+      "expectedKeywords": ["trained", "safe", "escape", "route", "correct", "type"]
+    },
+    {
+      "id": "q7_causes",
+      "type": "fill_in_the_blank",
+      "prompt": "What are the most common causes of fire in a workshop environment?",
+      "points": 5,
+      "expectedKeywords": ["sparks", "welding", "electrical", "faults", "flammable", "spills", "arson"]
+    },
+    {
+      "id": "q8_prevention",
+      "type": "fill_in_the_blank",
+      "prompt": "What can you do to prevent fire from occurring?",
+      "points": 5,
+      "expectedKeywords": ["clean", "tidy", "store", "safely", "report", "faults", "ventilation"]
+    }
+  ]
+}

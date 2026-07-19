@@ -1,0 +1,37 @@
+{
+  "id": "ws9",
+  "domain": "engineering",
+  "title": "Maximising Materials (Q&A)",
+  "description": "Learn about efficient material use, nesting, and accurate marking out.",
+  "questions": [
+    {
+      "id": "q1_efficient_use",
+      "type": "fill_in_the_blank",
+      "prompt": "Review the image of the laser cut components. Discuss whether you think this is an efficient use of the material.",
+      "points": 5,
+      "expectedKeywords": ["waste", "inefficient", "gap", "space", "close", "nesting"],
+      "imageUrl": "/assets/engineering/ws9/img_1_2.png"
+    },
+    {
+      "id": "q2_process_name",
+      "type": "fill_in_the_blank",
+      "prompt": "What is the process of arranging parts tightly together to minimise waste called?",
+      "points": 5,
+      "expectedKeywords": ["nesting", "nest", "tessellation"]
+    },
+    {
+      "id": "q3_cadcam",
+      "type": "fill_in_the_blank",
+      "prompt": "What is this process called when being used in conjunction with CAD/CAM software?",
+      "points": 5,
+      "expectedKeywords": ["cnc", "nesting", "software", "auto", "automated", "cam"]
+    },
+    {
+      "id": "q4_marking_out",
+      "type": "fill_in_the_blank",
+      "prompt": "Explain why the marking out of the material would need to be clear and dimensionally accurate for an assembly.",
+      "points": 5,
+      "expectedKeywords": ["fit", "together", "assembly", "waste", "tolerance", "accurate", "mistake"]
+    }
+  ]
+}

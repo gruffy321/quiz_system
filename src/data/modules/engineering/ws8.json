@@ -1,0 +1,64 @@
+{
+  "id": "ws8",
+  "domain": "engineering",
+  "title": "Work Experience Reflection (RA)",
+  "description": "Reflect on working relationships, conflict resolution, regulations, and reporting procedures.",
+  "questions": [
+    {
+      "id": "q1_problems",
+      "type": "fill_in_the_blank",
+      "prompt": "Describe the organisational procedures to deal with and report any problems that can affect working relationships.",
+      "points": 5,
+      "expectedKeywords": ["report", "supervisor", "manager", "hr", "procedure", "formal"]
+    },
+    {
+      "id": "q2_difficulties",
+      "type": "fill_in_the_blank",
+      "prompt": "Describe the difficulties that can occur in working relationships and how you can resolve them.",
+      "points": 5,
+      "expectedKeywords": ["communication", "misunderstanding", "talk", "discuss", "compromise"]
+    },
+    {
+      "id": "q3_conflict",
+      "type": "fill_in_the_blank",
+      "prompt": "Describe the sorts of attitudes and requests that are likely to create conflict or negative responses.",
+      "points": 5,
+      "expectedKeywords": ["unreasonable", "rude", "aggressive", "lazy", "disrespect"]
+    },
+    {
+      "id": "q4_working_time",
+      "type": "fill_in_the_blank",
+      "prompt": "Describe how The Working Time Regulations affect how you should be treated at work.",
+      "points": 5,
+      "expectedKeywords": ["hours", "breaks", "rest", "limit", "time"]
+    },
+    {
+      "id": "q5_equality",
+      "type": "fill_in_the_blank",
+      "prompt": "Describe how The Equality Act affects how you should be treated at work.",
+      "points": 5,
+      "expectedKeywords": ["fair", "discrimination", "equal", "opportunity", "race", "gender"]
+    },
+    {
+      "id": "q6_improving_practices",
+      "type": "fill_in_the_blank",
+      "prompt": "Describe the importance of making a contribution to improving working practices and procedures.",
+      "points": 5,
+      "expectedKeywords": ["efficiency", "safety", "cost", "save", "better", "quality"]
+    },
+    {
+      "id": "q7_initiative",
+      "type": "fill_in_the_blank",
+      "prompt": "Explain when you should act on your own initiative and when you should ask for help from others.",
+      "points": 5,
+      "expectedKeywords": ["trained", "safe", "unsure", "dangerous", "help", "ask"]
+    },
+    {
+      "id": "q8_reporting",
+      "type": "fill_in_the_blank",
+      "prompt": "In the workplace generally, who would you need to report to in the event of a problem?",
+      "points": 5,
+      "expectedKeywords": ["supervisor", "manager", "foreman", "leader", "boss"]
+    }
+  ]
+}

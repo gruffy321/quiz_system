@@ -1,0 +1,39 @@
+{
+  "id": "ws6",
+  "domain": "engineering",
+  "title": "The Need for PPE (Q&A)",
+  "description": "Identify Personal Protective Equipment and understand what each item protects against.",
+  "questions": [
+    {
+      "id": "q1_ppe_names",
+      "type": "drag_and_drop",
+      "prompt": "Identify the correct name for each piece of PPE.",
+      "points": 10,
+      "draggables": [
+        { "id": "glasses", "label": "Safety Glasses" },
+        { "id": "ear", "label": "Ear Defenders" },
+        { "id": "boots", "label": "Safety Boots" },
+        { "id": "hivis", "label": "Hi-Vis Vest" },
+        { "id": "gloves", "label": "Gloves" },
+        { "id": "hardhat", "label": "Hard Hat" },
+        { "id": "mask", "label": "Dust Mask" }
+      ],
+      "dropZones": [
+        { "id": "dz_glasses", "expectedDraggableId": "glasses", "imageUrl": "/assets/engineering/ws6/img_1_2.jpeg" },
+        { "id": "dz_ear", "expectedDraggableId": "ear", "imageUrl": "/assets/engineering/ws6/img_1_3.jpeg" },
+        { "id": "dz_boots", "expectedDraggableId": "boots", "imageUrl": "/assets/engineering/ws6/img_1_4.jpeg" },
+        { "id": "dz_hivis", "expectedDraggableId": "hivis", "imageUrl": "/assets/engineering/ws6/img_2_6.jpeg" },
+        { "id": "dz_gloves", "expectedDraggableId": "gloves", "imageUrl": "/assets/engineering/ws6/img_2_7.jpeg" },
+        { "id": "dz_hardhat", "expectedDraggableId": "hardhat", "imageUrl": "/assets/engineering/ws6/img_2_8.jpeg" },
+        { "id": "dz_mask", "expectedDraggableId": "mask", "imageUrl": "/assets/engineering/ws6/img_2_9.jpeg" }
+      ]
+    },
+    {
+      "id": "q2_protects",
+      "type": "fill_in_the_blank",
+      "prompt": "Why is it important to use appropriate PPE at all times?",
+      "points": 5,
+      "expectedKeywords": ["protect", "injury", "harm", "safe", "risk", "hazard"]
+    }
+  ]
+}
