@@ -1,3 +1,5 @@
+import fs from 'fs';
+import path from 'path';
 import { getStudentSession } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 import { redirect } from 'next/navigation';
@@ -17,18 +19,23 @@ export default async function Home() {
   if (!student) redirect('/login');
   if (!student.fullName) redirect('/onboarding');
 
-  // Hardcode available modules for now
-  const modules = [
-    { id: 'ws1', title: 'Hazard Warning Diamonds' },
-    { id: 'ws3', title: 'Engineering Drawings' },
-    { id: 'ws4', title: 'ISO Fluid Power Symbols' },
-    { id: 'ws5', title: 'BS3939 Circuit Symbols' },
-    { id: 'ws6', title: 'Types of Fire Extinguishers' },
-    { id: 'ws7', title: 'PPE (Personal Protective Equipment)' },
-    { id: 'ws8', title: 'Mechanical Handling Equipment' },
-    { id: 'ws9', title: 'Maximising Materials (Q&A)' },
-    { id: 'ws10', title: 'Files (Q&A)' },
-  ];
+  // Dynamically load and parse modules from the filesystem
+  const modulesDir = path.join(process.cwd(), 'src/data/modules/engineering');
+  const fileNames = fs.readdirSync(modulesDir);
+  const modules = fileNames
+    .filter(file => file.endsWith('.json'))
+    .map(file => {
+      const filePath = path.join(modulesDir, file);
+      const content = fs.readFileSync(filePath, 'utf8');
+      const json = JSON.parse(content);
+      return { id: json.id, title: json.title };
+    })
+    .sort((a, b) => {
+      // Sort numerically by the WS number (e.g., ws1, ws2, ws10)
+      const numA = parseInt(a.id.replace(/\D/g, ''), 10);
+      const numB = parseInt(b.id.replace(/\D/g, ''), 10);
+      return numA - numB;
+    });
 
   return (
     <div className="min-h-screen bg-background py-12 px-4">
@@ -49,10 +56,22 @@ export default async function Home() {
             <Link 
               key={mod.id} 
               href={`/modules/engineering/${mod.id}`}
-              className="bg-card p-6 rounded-lg border border-border hover:border-primary hover:shadow-md transition-all flex flex-col justify-between h-32 group"
+              className="bg-card p-6 rounded-lg border border-border hover:border-primary hover:shadow-md transition-all flex flex-col justify-between min-h-[8rem] group relative overflow-hidden"
             >
-              <h3 className="font-semibold text-lg group-hover:text-primary transition-colors">{mod.title}</h3>
-              <span className="text-sm text-primary font-medium mt-4">Start Module &rarr;</span>
+              <div className="flex items-start justify-between">
+                <h3 className="font-semibold text-lg group-hover:text-primary transition-colors pr-2 leading-tight">
+                  {mod.title}
+                </h3>
+                <span className="text-xs font-bold bg-primary/10 text-primary px-2 py-1 rounded-md shadow-sm border border-primary/20 flex-shrink-0 uppercase tracking-wider">
+                  {mod.id}
+                </span>
+              </div>
+              <span className="text-sm text-primary font-medium mt-6 inline-flex items-center">
+                Start Module 
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </span>
             </Link>
           ))}
         </div>
