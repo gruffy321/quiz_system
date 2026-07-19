@@ -1,0 +1,72 @@
+{
+  "id": "ws10",
+  "domain": "engineering",
+  "title": "Files (Q&A)",
+  "description": "Understanding file types, cuts, safety, and filing techniques.",
+  "questions": [
+    {
+      "id": "q1_file_types",
+      "type": "drag_and_drop",
+      "prompt": "Match the correct file name to its cross-section image.",
+      "points": 10,
+      "draggables": [
+        { "id": "flat", "label": "Flat file" },
+        { "id": "hand", "label": "Hand file" },
+        { "id": "round", "label": "Round file" },
+        { "id": "square", "label": "Square file" },
+        { "id": "threesquare", "label": "Three-square file" },
+        { "id": "halfround", "label": "Half-round file" }
+      ],
+      "dropZones": [
+        { "id": "dz_flat", "expectedDraggableId": "flat", "imageUrl": "/assets/engineering/ws10/img_1_2.jpeg" },
+        { "id": "dz_hand", "expectedDraggableId": "hand", "imageUrl": "/assets/engineering/ws10/img_1_3.jpeg" },
+        { "id": "dz_round", "expectedDraggableId": "round", "imageUrl": "/assets/engineering/ws10/img_1_4.jpeg" },
+        { "id": "dz_square", "expectedDraggableId": "square", "imageUrl": "/assets/engineering/ws10/img_1_5.jpeg" },
+        { "id": "dz_threesquare", "expectedDraggableId": "threesquare", "imageUrl": "/assets/engineering/ws10/img_1_6.jpeg" },
+        { "id": "dz_halfround", "expectedDraggableId": "halfround", "imageUrl": "/assets/engineering/ws10/img_1_7.jpeg" }
+      ]
+    },
+    {
+      "id": "q2_file_cuts",
+      "type": "fill_in_the_blank",
+      "prompt": "Describe the difference between single and double cut files.",
+      "points": 5,
+      "expectedKeywords": ["single", "one direction", "double", "criss", "cross", "two directions"]
+    },
+    {
+      "id": "q3_file_safety",
+      "type": "fill_in_the_blank",
+      "prompt": "Review the image of the file. List three checks you would make to ensure it is safe to use.",
+      "points": 5,
+      "expectedKeywords": ["handle", "secure", "teeth", "clean", "damage"]
+    },
+    {
+      "id": "q4_preparing",
+      "type": "fill_in_the_blank",
+      "prompt": "Describe how you would prepare material to be filed.",
+      "points": 5,
+      "expectedKeywords": ["clean", "mark", "secure", "vice"]
+    },
+    {
+      "id": "q5_soft_jaws",
+      "type": "fill_in_the_blank",
+      "prompt": "Explain what soft jaws / vice jaw plates are used for and the consequences of not using them.",
+      "points": 5,
+      "expectedKeywords": ["protect", "damage", "workpiece", "surface", "mark"]
+    },
+    {
+      "id": "q6_tech_flat",
+      "type": "fill_in_the_blank",
+      "prompt": "State the tool and technique required to achieve a flat surface.",
+      "points": 5,
+      "expectedKeywords": ["flat file", "cross", "filing"]
+    },
+    {
+      "id": "q7_tech_smooth",
+      "type": "fill_in_the_blank",
+      "prompt": "State the tool and technique required to achieve a smooth surface finish.",
+      "points": 5,
+      "expectedKeywords": ["draw", "filing", "smooth"]
+    }
+  ]
+}
