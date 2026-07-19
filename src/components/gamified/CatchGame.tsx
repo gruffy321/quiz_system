@@ -104,8 +104,11 @@ export function CatchGame({ basketLabel, items, onComplete }: CatchGameProps) {
         nextItems.splice(collidedIndex, 1);
         handleCollision(collided.data);
       } else if (missedTargetIndex !== -1) {
-        // Just remove it if it falls off screen
+        const missed = nextItems[missedTargetIndex];
         nextItems.splice(missedTargetIndex, 1);
+        if (missed.data.isTarget) {
+          handleMissedTarget(missed.data);
+        }
       }
 
       return nextItems;
@@ -113,6 +116,11 @@ export function CatchGame({ basketLabel, items, onComplete }: CatchGameProps) {
 
     requestRef.current = requestAnimationFrame(updatePhysics);
   }, [isPlaying, pausedItem, isGameOver, basketX, spawnItem]);
+
+  const handleMissedTarget = (item: CatchItem) => {
+    setPausedItem({ data: item, isCaught: false });
+    setAttempts(a => a + 1); // Penalize!
+  };
 
   // Handle Collision Logic
   const handleCollision = (item: CatchItem) => {
@@ -253,15 +261,21 @@ export function CatchGame({ basketLabel, items, onComplete }: CatchGameProps) {
           <div className="absolute inset-0 bg-black/60 flex items-center justify-center z-50 p-6">
             <div className="bg-card w-full max-w-sm rounded-xl p-6 shadow-2xl animate-in zoom-in-95 duration-200">
               <div className="text-center mb-6">
-                <div className={`w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4 ${pausedItem.data.isTarget ? 'bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400' : 'bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400'}`}>
-                  {pausedItem.data.isTarget ? (
+                <div className={`w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4 ${
+                  (pausedItem.isCaught && pausedItem.data.isTarget)
+                    ? 'bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400' 
+                    : 'bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400'
+                }`}>
+                  {(pausedItem.isCaught && pausedItem.data.isTarget) ? (
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
                   ) : (
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" /></svg>
                   )}
                 </div>
                 <h3 className="text-2xl font-bold mb-2">
-                  {pausedItem.data.isTarget ? 'Good Catch!' : 'Oops! Hazard Caught.'}
+                  {pausedItem.isCaught 
+                    ? (pausedItem.data.isTarget ? 'Good Catch!' : 'Oops! Hazard Caught.')
+                    : 'Oops! You missed a target!'}
                 </h3>
                 <h4 className="text-lg font-semibold text-foreground/80 mb-4">{pausedItem.data.text}</h4>
                 <p className="text-foreground/70">{pausedItem.data.explanation}</p>
