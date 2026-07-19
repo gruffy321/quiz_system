@@ -22,29 +22,40 @@ export const QuestionRenderer: React.FC<QuestionRendererProps> = ({ question }) 
     
     // Fire and forget metric logging
     if (sessionId) {
-      fetch('/api/metrics', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          sessionId,
-          questionId: question.id,
-          incorrectAttempts,
-          isCorrect: true, // They finally got it right
-          timeTakenSeconds: 0, // Placeholder for future timer
-        }),
-      }).catch(err => console.error('Metric sync failed:', err));
+      try {
+        const res = await fetch('/api/metrics', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            sessionId,
+            questionId: question.id,
+            incorrectAttempts,
+            isCorrect: true, 
+            timeTakenSeconds: 0, 
+          }),
+        });
+        if (!res.ok) console.error('Metric sync returned non-OK status');
+      } catch (err) {
+        console.error('Metric sync failed:', err);
+      }
     }
   };
 
   const handleFillInTheBlankSubmit = (input: string) => {
     setErrorMsg('');
     if (question.type === 'fill_in_the_blank' && question.expectedKeywords) {
-      const inputLower = input.toLowerCase();
+      const inputLower = input.toLowerCase().trim();
+      const inputWords = inputLower.split(/[\s,]+/);
       const matchedKeywords = question.expectedKeywords.filter(kw => inputLower.includes(kw.toLowerCase()));
       
       const threshold = Math.ceil(question.expectedKeywords.length / 2);
-      if (matchedKeywords.length < threshold) {
-        setErrorMsg(`Your answer is missing key concepts. Try to include terminology related to: ${question.expectedKeywords.join(', ')}`);
+      
+      // Check for keywords and ensure they actually wrote a sentence (not just a comma separated list of the keywords)
+      const isTooShort = inputWords.length <= question.expectedKeywords.length + 1;
+      
+      if (matchedKeywords.length < threshold || isTooShort) {
+        setErrorMsg(`Your answer is missing key concepts or is too brief. Try to include terminology related to: ${question.expectedKeywords.join(', ')} in a full sentence.`);
+        
         // Track the failed attempt
         if (sessionId) {
            fetch('/api/metrics', {

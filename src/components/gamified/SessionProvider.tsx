@@ -21,6 +21,9 @@ export const SessionProvider = ({ children, moduleId, domain }: { children: Reac
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ moduleId, domain }),
         });
+        if (!res.ok) {
+          throw new Error('Non-OK response from /api/sessions');
+        }
         const data = await res.json();
         if (data.sessionId) setSessionId(data.sessionId);
       } catch (err) {
