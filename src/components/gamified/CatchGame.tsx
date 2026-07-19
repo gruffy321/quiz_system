@@ -31,7 +31,8 @@ export function CatchGame({ basketLabel, basketImageUrl, items, onComplete }: Ca
   const [basketXState, setBasketXState] = useState(GAME_WIDTH / 2 - BASKET_WIDTH / 2);
   const basketX = useRef(GAME_WIDTH / 2 - BASKET_WIDTH / 2);
   const targetBasketX = useRef(GAME_WIDTH / 2 - BASKET_WIDTH / 2); // For smoothing
-  const [activeItems, setActiveItems] = useState<ActiveItem[]>([]);
+  const [activeItemsState, setActiveItemsState] = useState<ActiveItem[]>([]);
+  const activeItems = useRef<ActiveItem[]>([]);
   
   // Game State
   const [caughtTargets, setCaughtTargets] = useState<string[]>([]); // Track caught target IDs
@@ -47,8 +48,10 @@ export function CatchGame({ basketLabel, basketImageUrl, items, onComplete }: Ca
 
   const targetCount = items.filter(i => i.isTarget).length;
 
-  const updatePhysics = useCallback((time: number) => {
+  const updatePhysics = useCallback(() => {
     if (!isPlaying || pausedItem || isGameOver) return;
+
+    const currentTime = performance.now();
 
     // Handle continuous keypresses for smooth Arkanoid movement
     if (keysPressed.current.left) {
@@ -62,77 +65,76 @@ export function CatchGame({ basketLabel, basketImageUrl, items, onComplete }: Ca
     basketX.current = basketX.current + (targetBasketX.current - basketX.current) * 0.25;
     setBasketXState(basketX.current);
 
-    setActiveItems(prevItems => {
-      let nextItems = [...prevItems];
+    let nextItems = [...activeItems.current];
 
-      // 1. Spawning Logic (Moved inside to check against current active items)
-      if (time - lastSpawnTime.current > 2000) {
-        const available = items.filter(item => {
-          // Don't spawn targets that are already caught
-          if (item.isTarget && caughtTargets.includes(item.id)) return false;
-          // Prevent duplicates of any item currently on screen
-          if (nextItems.some(active => active.data.id === item.id)) return false;
-          return true;
+    // 1. Spawning Logic
+    if (currentTime - lastSpawnTime.current > 2000) {
+      const available = items.filter(item => {
+        // Don't spawn targets that are already caught
+        if (item.isTarget && caughtTargets.includes(item.id)) return false;
+        // Prevent duplicates of any item currently on screen
+        if (nextItems.some(active => active.data.id === item.id)) return false;
+        return true;
+      });
+
+      if (available.length > 0) {
+        const randomItem = available[Math.floor(Math.random() * available.length)];
+        const newX = Math.random() * (GAME_WIDTH - ITEM_SIZE);
+        nextItems.push({
+          id: Math.random().toString(36).substr(2, 9),
+          data: randomItem,
+          x: newX,
+          y: -ITEM_SIZE,
+          speed: 2 + Math.random() * 2 // Fall speed between 2 and 4
         });
+        lastSpawnTime.current = currentTime;
+      }
+    }
 
-        if (available.length > 0) {
-          const randomItem = available[Math.floor(Math.random() * available.length)];
-          const newX = Math.random() * (GAME_WIDTH - ITEM_SIZE);
-          nextItems.push({
-            id: Math.random().toString(36).substr(2, 9),
-            data: randomItem,
-            x: newX,
-            y: -ITEM_SIZE,
-            speed: 2 + Math.random() * 2 // Fall speed between 2 and 4
-          });
-          lastSpawnTime.current = time;
+    // 2. Physics & Collision Logic
+    let collidedIndex = -1;
+    let missedTargetIndex = -1;
+
+    for (let i = 0; i < nextItems.length; i++) {
+      const item = nextItems[i];
+      item.y += item.speed;
+
+      // Collision Check
+      const itemBottom = item.y + ITEM_SIZE;
+      const basketTop = GAME_HEIGHT - BASKET_HEIGHT;
+      const itemCenterX = item.x + (ITEM_SIZE / 2);
+      
+      // Expanded hit box to make it more forgiving
+      const hitToleranceX = 30; // pixels of leniency on the sides
+      const hitToleranceY = 15; // pixels of leniency above the basket
+
+      if (itemBottom >= basketTop - hitToleranceY && item.y <= GAME_HEIGHT) {
+        if (itemCenterX >= basketX.current - hitToleranceX && itemCenterX <= basketX.current + BASKET_WIDTH + hitToleranceX) {
+          collidedIndex = i;
+          break;
         }
       }
 
-      // 2. Physics & Collision Logic
-      let collidedIndex = -1;
-      let missedTargetIndex = -1;
-
-      for (let i = 0; i < nextItems.length; i++) {
-        const item = nextItems[i];
-        item.y += item.speed;
-
-        // Collision Check
-        const itemBottom = item.y + ITEM_SIZE;
-        const basketTop = GAME_HEIGHT - BASKET_HEIGHT;
-        const itemCenterX = item.x + (ITEM_SIZE / 2);
-        
-        // Expanded hit box to make it more forgiving
-        const hitToleranceX = 30; // pixels of leniency on the sides
-        const hitToleranceY = 15; // pixels of leniency above the basket
-
-        if (itemBottom >= basketTop - hitToleranceY && item.y <= GAME_HEIGHT) {
-          if (itemCenterX >= basketX.current - hitToleranceX && itemCenterX <= basketX.current + BASKET_WIDTH + hitToleranceX) {
-            collidedIndex = i;
-            break;
-          }
-        }
-
-        // Missed target check
-        if (item.y > GAME_HEIGHT) {
-          missedTargetIndex = i;
-        }
+      // Missed target check
+      if (item.y > GAME_HEIGHT) {
+        missedTargetIndex = i;
       }
+    }
 
-      if (collidedIndex !== -1) {
-        const collided = nextItems[collidedIndex];
-        nextItems.splice(collidedIndex, 1);
-        handleCollision(collided.data);
-      } else if (missedTargetIndex !== -1) {
-        const missed = nextItems[missedTargetIndex];
-        nextItems.splice(missedTargetIndex, 1);
-        if (missed.data.isTarget) {
-          handleMissedTarget(missed.data);
-        }
+    if (collidedIndex !== -1) {
+      const collided = nextItems[collidedIndex];
+      nextItems.splice(collidedIndex, 1);
+      handleCollision(collided.data);
+    } else if (missedTargetIndex !== -1) {
+      const missed = nextItems[missedTargetIndex];
+      nextItems.splice(missedTargetIndex, 1);
+      if (missed.data.isTarget) {
+        handleMissedTarget(missed.data);
       }
+    }
 
-      return nextItems;
-    });
+    activeItems.current = nextItems;
+    setActiveItemsState(nextItems);
 
     requestRef.current = requestAnimationFrame(updatePhysics);
   }, [isPlaying, pausedItem, isGameOver, items, caughtTargets]);
@@ -207,7 +209,8 @@ export function CatchGame({ basketLabel, basketImageUrl, items, onComplete }: Ca
     setIsPlaying(true);
     setCaughtTargets([]);
     setAttempts(0);
-    setActiveItems([]);
+    setActiveItemsState([]);
+    activeItems.current = [];
     setIsGameOver(false);
     lastSpawnTime.current = performance.now();
   };
@@ -250,7 +253,7 @@ export function CatchGame({ basketLabel, basketImageUrl, items, onComplete }: Ca
         ) : null}
 
         {/* Falling Items */}
-        {activeItems.map(item => (
+        {activeItemsState.map(item => (
           <div 
             key={item.id}
             className="absolute flex items-center justify-center bg-card shadow-md rounded-full border border-border overflow-hidden"
