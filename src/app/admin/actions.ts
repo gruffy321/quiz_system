@@ -13,7 +13,7 @@ export async function loginAdmin(formData: FormData) {
     await setAdminSession();
     redirect('/admin');
   } else {
-    throw new Error('Invalid password');
+    return { error: 'Invalid password' };
   }
 }
 

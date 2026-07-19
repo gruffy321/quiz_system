@@ -8,9 +8,12 @@ export default function AdminLoginPage() {
 
   const handleSubmit = async (formData: FormData) => {
     try {
-      await loginAdmin(formData);
+      const result = await loginAdmin(formData);
+      if (result?.error) {
+        setError(result.error);
+      }
     } catch (e: any) {
-      setError(e.message);
+      setError("An unexpected error occurred.");
     }
   };
 
