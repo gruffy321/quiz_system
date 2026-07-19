@@ -26,18 +26,25 @@
       "expectedKeywords": ["store", "handle", "chemicals", "safely", "data sheet", "spill"]
     },
     {
-      "id": "q4_tool_risks",
-      "type": "fill_in_the_blank",
-      "prompt": "Describe the risks associated with tools in the working environment.",
-      "points": 5,
-      "expectedKeywords": ["injury", "cuts", "damage", "blunt", "incorrect"]
-    },
-    {
-      "id": "q5_tool_safety_info",
-      "type": "fill_in_the_blank",
-      "prompt": "What sources of information are available for tool safety?",
-      "points": 5,
-      "expectedKeywords": ["manual", "instructions", "supervisor", "manufacturer", "guide"]
+      "id": "q4_tool_safety_match",
+      "type": "matching_pairs",
+      "prompt": "Match the safety concept or risk to its corresponding action or source.",
+      "points": 15,
+      "leftItems": [
+        { "id": "l_blunt", "text": "Blunt or damaged tool" },
+        { "id": "l_wrong_tool", "text": "Using incorrect tool for the job" },
+        { "id": "l_info", "text": "Tool safety information source" }
+      ],
+      "rightItems": [
+        { "id": "r_blunt", "text": "Increases risk of slipping and injury" },
+        { "id": "r_wrong_tool", "text": "Can damage the workpiece or break the tool" },
+        { "id": "r_info", "text": "Manufacturer's manual or supervisor" }
+      ],
+      "correctMatches": [
+        { "leftId": "l_blunt", "rightId": "r_blunt" },
+        { "leftId": "l_wrong_tool", "rightId": "r_wrong_tool" },
+        { "leftId": "l_info", "rightId": "r_info" }
+      ]
     },
     {
       "id": "q6_control_lockoff",

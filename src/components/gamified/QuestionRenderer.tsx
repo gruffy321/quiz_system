@@ -6,6 +6,8 @@ import { DragAndDropBoard } from './DragAndDropBoard';
 import { UserPrompt } from '@/components/common/UserPrompt';
 import { Alert } from '@/components/common/Alert';
 import { useSession } from './SessionProvider';
+import { SequenceBuilder } from './SequenceBuilder';
+import { MatchingPairs } from './MatchingPairs';
 
 interface QuestionRendererProps {
   question: Question;
@@ -91,6 +93,23 @@ export const QuestionRenderer: React.FC<QuestionRendererProps> = ({ question }) 
             promptText={question.prompt} 
             onSubmit={handleFillInTheBlankSubmit} 
             requireCleanInput={true}
+          />
+        );
+      case 'sequence_builder':
+        return (
+          <SequenceBuilder
+            steps={question.steps}
+            correctOrder={question.correctOrder}
+            onComplete={(attempts) => handleComplete(attempts)}
+          />
+        );
+      case 'matching_pairs':
+        return (
+          <MatchingPairs
+            leftItems={question.leftItems}
+            rightItems={question.rightItems}
+            correctMatches={question.correctMatches}
+            onComplete={(attempts) => handleComplete(attempts)}
           />
         );
       default:

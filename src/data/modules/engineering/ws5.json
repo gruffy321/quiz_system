@@ -6,10 +6,16 @@
   "questions": [
     {
       "id": "q1_fire_alarm",
-      "type": "fill_in_the_blank",
-      "prompt": "List the steps to be taken if the fire alarm sounds whilst you are using a machine.",
-      "points": 5,
-      "expectedKeywords": ["stop", "isolate", "power", "leave", "calm", "assembly", "point"]
+      "type": "sequence_builder",
+      "prompt": "Arrange the steps to be taken if the fire alarm sounds whilst you are using a machine into the correct chronological order.",
+      "points": 10,
+      "steps": [
+        { "id": "step_1", "text": "Stop the machine immediately" },
+        { "id": "step_2", "text": "Isolate the power supply" },
+        { "id": "step_3", "text": "Leave the building calmly via the nearest safe exit" },
+        { "id": "step_4", "text": "Report to your designated assembly point" }
+      ],
+      "correctOrder": ["step_1", "step_2", "step_3", "step_4"]
     },
     {
       "id": "q2_reporting",
