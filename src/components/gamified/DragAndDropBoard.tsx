@@ -45,15 +45,15 @@ const DropZone = ({ id, imageUrl, children }: DropZoneProps) => {
   const { isOver, setNodeRef } = useDroppable({ id });
 
   return (
-    <div className="flex flex-col items-center gap-2 m-2">
+    <div className="flex flex-col items-center gap-4 m-2 flex-1 min-w-[140px] max-w-[240px]">
       {imageUrl && (
-        <div className="w-24 h-24 flex items-center justify-center rounded-sm">
-          <img src={imageUrl} alt="Hazard Symbol" className="w-20 h-20 object-contain" />
+        <div className="w-full h-24 md:h-32 flex items-center justify-center rounded-sm">
+          <img src={imageUrl} alt="Diagram" className="max-w-full max-h-full object-contain drop-shadow-sm" />
         </div>
       )}
       <div
         ref={setNodeRef}
-        className={`p-2 w-40 h-16 border-2 border-dashed rounded-md flex items-center justify-center text-sm text-center transition-colors ${
+        className={`p-2 w-full h-16 border-2 border-dashed rounded-md flex items-center justify-center text-sm text-center transition-colors ${
           isOver ? 'bg-primary/10 border-primary' : 'bg-card border-border'
         }`}
       >
