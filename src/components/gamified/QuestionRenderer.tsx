@@ -117,6 +117,7 @@ export const QuestionRenderer: React.FC<QuestionRendererProps> = ({ question }) 
         return (
           <CatchGame
             basketLabel={question.basketLabel}
+            basketImageUrl={question.basketImageUrl}
             items={question.items}
             onComplete={(attempts) => handleComplete(attempts)}
           />

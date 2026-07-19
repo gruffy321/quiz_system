@@ -15,49 +15,49 @@
         {
           "id": "item_goggles",
           "text": "Safety Goggles",
-          "imageUrl": "/assets/engineering/ws6/safety-goggles.svg",
+          "imageUrl": "/assets/engineering/ws6/ppe-safety-goggles.svg",
           "isTarget": true,
           "explanation": "Safety Goggles protect your eyes from flying debris, sparks, and chemical splashes."
         },
         {
           "id": "item_ear",
           "text": "Ear Defenders",
-          "imageUrl": "/assets/engineering/ws6/ear-defenders.svg",
+          "imageUrl": "/assets/engineering/ws6/ppe-ear-defenders.svg",
           "isTarget": true,
           "explanation": "Ear Defenders are essential when working around loud machinery to prevent long-term hearing loss."
         },
         {
           "id": "item_boots",
           "text": "Safety Boots",
-          "imageUrl": "/assets/engineering/ws6/steel-toecap-boots.svg",
+          "imageUrl": "/assets/engineering/ws6/ppe-steel-toecap-boots.svg",
           "isTarget": true,
           "explanation": "Steel-toe Safety Boots protect your feet from heavy falling objects and sharp materials."
         },
         {
           "id": "item_hivis",
           "text": "Hi-Vis Vest",
-          "imageUrl": "/assets/engineering/ws6/high-vis.svg",
+          "imageUrl": "/assets/engineering/ws6/ppe-high-vis.svg",
           "isTarget": true,
           "explanation": "High-Visibility Clothing ensures you are easily seen by vehicle operators and colleagues."
         },
         {
           "id": "item_mask",
           "text": "Face Mask",
-          "imageUrl": "/assets/engineering/ws6/face-mask.svg",
+          "imageUrl": "/assets/engineering/ws6/ppe-face-mask.svg",
           "isTarget": true,
           "explanation": "Dust masks and respirators protect your lungs from inhaling harmful fumes, dust, and particulates."
         },
         {
           "id": "item_hardhat",
           "text": "Hard Hat",
-          "imageUrl": "/assets/engineering/ws6/hard-hat.svg",
+          "imageUrl": "/assets/engineering/ws6/ppe-hard-hat.svg",
           "isTarget": true,
           "explanation": "Hard hats protect your head from falling objects and overhead hazards."
         },
         {
           "id": "item_gloves",
           "text": "Protective Gloves",
-          "imageUrl": "/assets/engineering/ws6/protective-gloves.svg",
+          "imageUrl": "/assets/engineering/ws6/ppe-protective-gloves.svg",
           "isTarget": true,
           "explanation": "Protective Gloves guard your hands against cuts, abrasions, and chemical burns."
         },
