@@ -41,6 +41,7 @@ export function CatchGame({ basketLabel, basketImageUrl, items, onComplete }: Ca
 
   const requestRef = useRef<number>(0);
   const lastSpawnTime = useRef<number>(0);
+  const keysPressed = useRef({ left: false, right: false });
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Filter out items that are targets and already caught
@@ -72,6 +73,14 @@ export function CatchGame({ basketLabel, basketImageUrl, items, onComplete }: Ca
   const updatePhysics = useCallback((time: number) => {
     if (!isPlaying || pausedItem || isGameOver) return;
 
+    // Handle continuous keypresses for smooth Arkanoid movement
+    if (keysPressed.current.left) {
+      targetBasketX.current = Math.max(0, targetBasketX.current - 6);
+    }
+    if (keysPressed.current.right) {
+      targetBasketX.current = Math.min(GAME_WIDTH - BASKET_WIDTH, targetBasketX.current + 6);
+    }
+
     // Smooth basket movement (Lerp)
     setBasketX(prev => {
       const diff = targetBasketX.current - prev;
@@ -94,8 +103,12 @@ export function CatchGame({ basketLabel, basketImageUrl, items, onComplete }: Ca
         const basketTop = GAME_HEIGHT - BASKET_HEIGHT;
         const itemCenterX = item.x + (ITEM_SIZE / 2);
         
-        if (itemBottom >= basketTop && itemBottom <= GAME_HEIGHT) {
-          if (itemCenterX >= basketX && itemCenterX <= basketX + BASKET_WIDTH) {
+        // Expanded hit box to make it more forgiving
+        const hitToleranceX = 30; // pixels of leniency on the sides
+        const hitToleranceY = 15; // pixels of leniency above the basket
+
+        if (itemBottom >= basketTop - hitToleranceY && item.y <= GAME_HEIGHT) {
+          if (itemCenterX >= basketX - hitToleranceX && itemCenterX <= basketX + BASKET_WIDTH + hitToleranceX) {
             collidedIndex = i;
             break;
           }
@@ -171,21 +184,23 @@ export function CatchGame({ basketLabel, basketImageUrl, items, onComplete }: Ca
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (isPlaying && !pausedItem && !isGameOver) {
-        const speed = 40;
-        if (e.key === 'ArrowLeft') {
-          targetBasketX.current = Math.max(0, targetBasketX.current - speed);
-        }
-        if (e.key === 'ArrowRight') {
-          targetBasketX.current = Math.min(GAME_WIDTH - BASKET_WIDTH, targetBasketX.current + speed);
-        }
+        if (e.key === 'ArrowLeft') keysPressed.current.left = true;
+        if (e.key === 'ArrowRight') keysPressed.current.right = true;
       }
+    };
+
+    const handleKeyUp = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') keysPressed.current.left = false;
+      if (e.key === 'ArrowRight') keysPressed.current.right = false;
     };
 
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keyup', handleKeyUp);
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keyup', handleKeyUp);
     };
   }, [isPlaying, pausedItem, isGameOver]);
 
@@ -220,7 +235,7 @@ export function CatchGame({ basketLabel, basketImageUrl, items, onComplete }: Ca
 
       <div 
         ref={containerRef}
-        className="relative w-full overflow-hidden bg-gradient-to-b from-sky-100 to-sky-50 dark:from-sky-950/20 dark:to-background border-2 border-border rounded-xl cursor-none"
+        className="relative w-full overflow-hidden bg-sky-100 dark:bg-sky-900/60 border-2 border-border rounded-xl cursor-none"
         style={{ height: GAME_HEIGHT, maxWidth: GAME_WIDTH }}
       >
         {!isPlaying ? (
