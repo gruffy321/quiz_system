@@ -17,7 +17,9 @@ export async function loginAdmin(formData: FormData) {
   }
 }
 
-export async function generateCodes(count: number = 30) {
+export async function generateCodes(formData: FormData) {
+  const countStr = formData.get('count') as string;
+  const count = parseInt(countStr, 10) || 1;
   const codes = [];
   const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // No ambiguous characters (I, 1, O, 0)
   

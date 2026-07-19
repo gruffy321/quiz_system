@@ -45,12 +45,20 @@ export default async function AdminDashboard() {
       <div>
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold">Admin Telemetry Dashboard</h1>
-          <form action={async () => {
-            'use server';
-            await generateCodes(30);
-          }}>
-            <button className="bg-primary text-primary-foreground px-4 py-2 rounded-md font-medium hover:bg-primary/90 transition-colors">
-              + Generate 30 Join Codes
+          <form action={generateCodes} className="flex gap-2 items-center bg-card border border-border p-2 rounded-lg shadow-sm">
+            <label htmlFor="count" className="text-sm font-medium ml-2 text-foreground/70">Generate:</label>
+            <input 
+              type="number" 
+              name="count" 
+              id="count"
+              defaultValue={30} 
+              min={1} 
+              max={100}
+              className="w-20 p-2 border border-border rounded-md bg-background focus:ring-2 focus:ring-primary focus:outline-none"
+            />
+            <span className="text-sm font-medium mr-2 text-foreground/70">codes</span>
+            <button type="submit" className="bg-primary text-primary-foreground px-4 py-2 rounded-md font-medium hover:bg-primary/90 transition-colors">
+              + Add
             </button>
           </form>
         </div>
