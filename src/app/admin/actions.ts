@@ -40,5 +40,4 @@ export async function generateCodes(formData: FormData) {
   });
 
   revalidatePath('/admin');
-  return codes;
 }
