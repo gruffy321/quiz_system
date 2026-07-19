@@ -6,6 +6,7 @@ import { Alert } from '@/components/common/Alert';
 
 interface CatchGameProps {
   basketLabel: string;
+  basketImageUrl?: string;
   items: CatchItem[];
   onComplete: (incorrectAttempts: number) => void;
 }
@@ -24,10 +25,11 @@ const BASKET_WIDTH = 120;
 const BASKET_HEIGHT = 40;
 const ITEM_SIZE = 60;
 
-export function CatchGame({ basketLabel, items, onComplete }: CatchGameProps) {
+export function CatchGame({ basketLabel, basketImageUrl, items, onComplete }: CatchGameProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
   const [basketX, setBasketX] = useState(GAME_WIDTH / 2 - BASKET_WIDTH / 2);
+  const targetBasketX = useRef(GAME_WIDTH / 2 - BASKET_WIDTH / 2); // For smoothing
   const [activeItems, setActiveItems] = useState<ActiveItem[]>([]);
   
   // Game State
@@ -69,6 +71,12 @@ export function CatchGame({ basketLabel, items, onComplete }: CatchGameProps) {
 
   const updatePhysics = useCallback((time: number) => {
     if (!isPlaying || pausedItem || isGameOver) return;
+
+    // Smooth basket movement (Lerp)
+    setBasketX(prev => {
+      const diff = targetBasketX.current - prev;
+      return prev + diff * 0.15; // 0.15 is the smoothing factor
+    });
 
     spawnItem(time);
 
@@ -115,7 +123,7 @@ export function CatchGame({ basketLabel, items, onComplete }: CatchGameProps) {
     });
 
     requestRef.current = requestAnimationFrame(updatePhysics);
-  }, [isPlaying, pausedItem, isGameOver, basketX, spawnItem]);
+  }, [isPlaying, pausedItem, isGameOver, spawnItem]);
 
   const handleMissedTarget = (item: CatchItem) => {
     setPausedItem({ data: item, isCaught: false });
@@ -157,15 +165,19 @@ export function CatchGame({ basketLabel, items, onComplete }: CatchGameProps) {
         const rect = containerRef.current.getBoundingClientRect();
         let newX = e.clientX - rect.left - (BASKET_WIDTH / 2);
         newX = Math.max(0, Math.min(newX, GAME_WIDTH - BASKET_WIDTH));
-        setBasketX(newX);
+        targetBasketX.current = newX; // Update target, not state directly
       }
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (isPlaying && !pausedItem && !isGameOver) {
-        const speed = 30;
-        if (e.key === 'ArrowLeft') setBasketX(x => Math.max(0, x - speed));
-        if (e.key === 'ArrowRight') setBasketX(x => Math.min(GAME_WIDTH - BASKET_WIDTH, x + speed));
+        const speed = 40;
+        if (e.key === 'ArrowLeft') {
+          targetBasketX.current = Math.max(0, targetBasketX.current - speed);
+        }
+        if (e.key === 'ArrowRight') {
+          targetBasketX.current = Math.min(GAME_WIDTH - BASKET_WIDTH, targetBasketX.current + speed);
+        }
       }
     };
 
@@ -198,7 +210,7 @@ export function CatchGame({ basketLabel, items, onComplete }: CatchGameProps) {
       <div className="mb-4 flex justify-between items-end">
         <div>
           <h4 className="font-bold text-lg">Catch the Right Items!</h4>
-          <p className="text-sm text-foreground/70">Move your mouse to catch the required items and avoid hazards.</p>
+          <p className="text-sm text-foreground/70">Use your <strong className="text-foreground">Mouse</strong> or <strong className="text-foreground">⬅️ ➡️ Arrow Keys</strong> to move the basket and avoid hazards.</p>
         </div>
         <div className="text-right">
           <p className="font-bold text-primary text-xl">{caughtTargets.length} / {targetCount}</p>
@@ -245,15 +257,20 @@ export function CatchGame({ basketLabel, items, onComplete }: CatchGameProps) {
 
         {/* Basket */}
         <div 
-          className="absolute bottom-0 bg-primary shadow-[0_-4px_10px_rgba(0,0,0,0.2)] rounded-t-lg flex items-center justify-center text-primary-foreground font-bold"
+          className="absolute bottom-0 rounded-t-lg flex items-center justify-center text-primary-foreground font-bold overflow-hidden"
           style={{
             left: basketX,
             width: BASKET_WIDTH,
             height: BASKET_HEIGHT,
-            transition: 'left 0.05s linear' // Smooth out arrow keys
+            backgroundColor: basketImageUrl ? 'transparent' : 'hsl(var(--primary))',
+            boxShadow: basketImageUrl ? 'none' : '0 -4px 10px rgba(0,0,0,0.2)'
           }}
         >
-          {basketLabel}
+          {basketImageUrl ? (
+            <img src={basketImageUrl} alt={basketLabel} className="w-full h-full object-contain object-bottom pointer-events-none" />
+          ) : (
+            <span>{basketLabel}</span>
+          )}
         </div>
 
         {/* Pause Modal overlay */}

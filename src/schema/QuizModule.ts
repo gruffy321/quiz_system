@@ -48,6 +48,7 @@ export interface CatchItem {
 export interface CatchGameQuestion extends BaseQuestion {
   type: 'catch_game';
   basketLabel: string;
+  basketImageUrl?: string;
   items: CatchItem[];
 }
 
