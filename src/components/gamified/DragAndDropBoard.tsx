@@ -20,8 +20,10 @@ const DraggableItem = ({ id, label, isMatched }: DraggableItemProps) => {
       {...listeners}
       {...attributes}
       className={`p-3 m-2 border rounded-md cursor-grab shadow-sm transition-colors ${
-        isMatched ? 'bg-green-100 text-green-800 border-green-300 opacity-50 cursor-not-allowed' : 'bg-white hover:bg-gray-50 border-gray-300'
-      }`}
+        isMatched 
+          ? 'bg-green-100 border-green-500 text-green-800 dark:bg-green-900/50 dark:border-green-600 dark:text-green-300' 
+          : 'bg-card border-border text-foreground hover:bg-primary/5'
+      } ${isDragging ? 'opacity-50' : 'opacity-100'}`}
     >
       {label}
     </div>
@@ -40,7 +42,7 @@ const DropZone = ({ id, matchedLabel, imageUrl }: DropZoneProps) => {
   return (
     <div className="flex flex-col items-center gap-2 m-2">
       {imageUrl && (
-        <div className="w-24 h-24 flex items-center justify-center bg-white border-2 border-red-500 rounded-sm">
+        <div className="w-24 h-24 flex items-center justify-center rounded-sm">
           {/* We will use a standard img tag here, relying on public/ folder static assets */}
           <img src={imageUrl} alt="Hazard Symbol" className="w-20 h-20 object-contain" />
         </div>
@@ -94,12 +96,12 @@ export const DragAndDropBoard: React.FC<DragAndDropBoardProps> = ({ draggables, 
 
   return (
     <DndContext onDragEnd={handleDragEnd}>
-      <div className="flex flex-col gap-8 p-6 bg-white rounded-lg shadow-sm border border-gray-200">
+      <div className="flex flex-col gap-8 p-6 bg-card rounded-lg shadow-sm border border-border">
         
         {/* Drop Zones (The "Boxes") */}
         <div className="flex flex-wrap justify-center gap-4">
           {dropZones.map((zone) => (
-            <DropZone key={zone.id} id={zone.id} matchedLabel={matches[zone.id]} />
+            <DropZone key={zone.id} id={zone.id} matchedLabel={matches[zone.id]} imageUrl={zone.imageUrl} />
           ))}
         </div>
 
