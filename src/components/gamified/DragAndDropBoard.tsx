@@ -78,7 +78,10 @@ export const DragAndDropBoard: React.FC<DragAndDropBoardProps> = ({ draggables, 
     if (!over) return;
     
     const draggable = draggables.find(d => d.id === active.id);
-    if (draggable && !matches[over.id]) {
+    const targetZone = dropZones.find(z => z.id === over.id);
+    
+    // STRICT VALIDATION: Only allow match if the active draggable matches the target zone's expectedDraggableId
+    if (draggable && targetZone && targetZone.expectedDraggableId === draggable.id && !matches[over.id]) {
       const newMatches = { ...matches, [over.id]: draggable.label };
       setMatches(newMatches);
 

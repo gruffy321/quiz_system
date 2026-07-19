@@ -54,7 +54,8 @@ function parseWS1() {
         id: "q2_disposal",
         type: "fill_in_the_blank",
         prompt: task2Prompt,
-        points: 5
+        points: 5,
+        correctAnswer: "To prevent harm to people, animals, and the environment." // Placeholder answer for testing strict validation
       }
     ]
   };

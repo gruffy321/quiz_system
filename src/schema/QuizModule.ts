@@ -13,6 +13,11 @@ export interface MultipleChoiceQuestion extends BaseQuestion {
   correctAnswerIndex: number;
 }
 
+export interface FillInTheBlankQuestion extends BaseQuestion {
+  type: 'fill_in_the_blank';
+  correctAnswer?: string;
+}
+
 export interface DragAndDropQuestion extends BaseQuestion {
   type: 'drag_and_drop';
   draggables: { id: string; label: string }[];
