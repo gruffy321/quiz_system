@@ -10,52 +10,98 @@
       "prompt": "Catch the necessary Personal Protective Equipment (PPE) required to safely enter the workshop, but avoid catching any hazards!",
       "points": 20,
       "basketLabel": "Workshop Entry",
+      "basketImageUrl": "/assets/engineering/ws6/workshop-entrance.svg",
       "items": [
         {
-          "id": "item_glasses",
-          "text": "Safety Glasses",
-          "imageUrl": "/assets/engineering/ws6/img_1_2.jpeg",
+          "id": "item_goggles",
+          "text": "Safety Goggles",
+          "imageUrl": "/assets/engineering/ws6/safety-goggles.svg",
           "isTarget": true,
-          "explanation": "Safety Glasses protect your eyes from flying debris, sparks, and chemical splashes."
+          "explanation": "Safety Goggles protect your eyes from flying debris, sparks, and chemical splashes."
         },
         {
           "id": "item_ear",
           "text": "Ear Defenders",
-          "imageUrl": "/assets/engineering/ws6/img_1_3.jpeg",
+          "imageUrl": "/assets/engineering/ws6/ear-defenders.svg",
           "isTarget": true,
           "explanation": "Ear Defenders are essential when working around loud machinery to prevent long-term hearing loss."
         },
         {
           "id": "item_boots",
           "text": "Safety Boots",
-          "imageUrl": "/assets/engineering/ws6/img_1_4.jpeg",
+          "imageUrl": "/assets/engineering/ws6/steel-toecap-boots.svg",
           "isTarget": true,
           "explanation": "Steel-toe Safety Boots protect your feet from heavy falling objects and sharp materials."
         },
         {
           "id": "item_hivis",
           "text": "Hi-Vis Vest",
-          "imageUrl": "/assets/engineering/ws6/img_2_6.jpeg",
+          "imageUrl": "/assets/engineering/ws6/high-vis.svg",
           "isTarget": true,
           "explanation": "High-Visibility Clothing ensures you are easily seen by vehicle operators and colleagues."
         },
         {
-          "id": "item_flipflops",
-          "text": "Flip Flops",
-          "isTarget": false,
-          "explanation": "Flip Flops expose your feet to heavy falling objects, sharp swarf, and chemical spills! Never wear open-toed shoes in a workshop."
+          "id": "item_mask",
+          "text": "Face Mask",
+          "imageUrl": "/assets/engineering/ws6/face-mask.svg",
+          "isTarget": true,
+          "explanation": "Dust masks and respirators protect your lungs from inhaling harmful fumes, dust, and particulates."
         },
         {
-          "id": "item_loose_tie",
+          "id": "item_hardhat",
+          "text": "Hard Hat",
+          "imageUrl": "/assets/engineering/ws6/hard-hat.svg",
+          "isTarget": true,
+          "explanation": "Hard hats protect your head from falling objects and overhead hazards."
+        },
+        {
+          "id": "item_gloves",
+          "text": "Protective Gloves",
+          "imageUrl": "/assets/engineering/ws6/protective-gloves.svg",
+          "isTarget": true,
+          "explanation": "Protective Gloves guard your hands against cuts, abrasions, and chemical burns."
+        },
+        {
+          "id": "item_nonsafety",
+          "text": "Non-Safety Shoes",
+          "imageUrl": "/assets/engineering/ws6/non-safety-shoes.svg",
+          "isTarget": false,
+          "explanation": "Standard shoes expose your feet to heavy falling objects, sharp swarf, and chemical spills! Never wear them in a workshop."
+        },
+        {
+          "id": "item_necktie",
           "text": "Loose Necktie",
+          "imageUrl": "/assets/engineering/ws6/neck-tie.png",
           "isTarget": false,
           "explanation": "Loose clothing and ties can get caught in rotating machinery like lathes or drills, causing catastrophic injuries."
         },
         {
-          "id": "item_headphones",
-          "text": "Music Headphones",
+          "id": "item_earphones",
+          "text": "Music Earphones",
+          "imageUrl": "/assets/engineering/ws6/earphones.png",
           "isTarget": false,
           "explanation": "Listening to music prevents you from hearing fire alarms, warnings from colleagues, or the sound of failing machinery."
+        },
+        {
+          "id": "item_food",
+          "text": "Food Items",
+          "imageUrl": "/assets/engineering/ws6/food-items.svg",
+          "isTarget": false,
+          "explanation": "Eating in a workshop is dangerous because your food can become contaminated by dust, swarf, or toxic chemicals."
+        },
+        {
+          "id": "item_inflatables",
+          "text": "Inflatables",
+          "imageUrl": "/assets/engineering/ws6/inflatables.svg",
+          "isTarget": false,
+          "explanation": "Toys and inflatables are a major distraction and tripping hazard in a busy workshop environment."
+        },
+        {
+          "id": "item_standard_glasses",
+          "text": "Standard Glasses",
+          "imageUrl": "/assets/engineering/ws6/standard-glasses.svg",
+          "isTarget": false,
+          "explanation": "Standard glasses shatter easily upon impact and do not protect against fast-flying debris from the sides."
         }
       ]
     }
