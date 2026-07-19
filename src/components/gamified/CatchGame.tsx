@@ -28,7 +28,8 @@ const ITEM_SIZE = 60;
 export function CatchGame({ basketLabel, basketImageUrl, items, onComplete }: CatchGameProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
-  const [basketX, setBasketX] = useState(GAME_WIDTH / 2 - BASKET_WIDTH / 2);
+  const [basketXState, setBasketXState] = useState(GAME_WIDTH / 2 - BASKET_WIDTH / 2);
+  const basketX = useRef(GAME_WIDTH / 2 - BASKET_WIDTH / 2);
   const targetBasketX = useRef(GAME_WIDTH / 2 - BASKET_WIDTH / 2); // For smoothing
   const [activeItems, setActiveItems] = useState<ActiveItem[]>([]);
   
@@ -58,10 +59,8 @@ export function CatchGame({ basketLabel, basketImageUrl, items, onComplete }: Ca
     }
 
     // Smooth basket movement (Lerp)
-    setBasketX(prev => {
-      const diff = targetBasketX.current - prev;
-      return prev + diff * 0.15; // 0.15 is the smoothing factor
-    });
+    basketX.current = basketX.current + (targetBasketX.current - basketX.current) * 0.25;
+    setBasketXState(basketX.current);
 
     setActiveItems(prevItems => {
       let nextItems = [...prevItems];
@@ -108,7 +107,7 @@ export function CatchGame({ basketLabel, basketImageUrl, items, onComplete }: Ca
         const hitToleranceY = 15; // pixels of leniency above the basket
 
         if (itemBottom >= basketTop - hitToleranceY && item.y <= GAME_HEIGHT) {
-          if (itemCenterX >= basketX - hitToleranceX && itemCenterX <= basketX + BASKET_WIDTH + hitToleranceX) {
+          if (itemCenterX >= basketX.current - hitToleranceX && itemCenterX <= basketX.current + BASKET_WIDTH + hitToleranceX) {
             collidedIndex = i;
             break;
           }
@@ -136,7 +135,7 @@ export function CatchGame({ basketLabel, basketImageUrl, items, onComplete }: Ca
     });
 
     requestRef.current = requestAnimationFrame(updatePhysics);
-  }, [isPlaying, pausedItem, isGameOver, items, caughtTargets, basketX]);
+  }, [isPlaying, pausedItem, isGameOver, items, caughtTargets]);
 
   const handleMissedTarget = (item: CatchItem) => {
     setPausedItem({ data: item, isCaught: false });
@@ -274,7 +273,7 @@ export function CatchGame({ basketLabel, basketImageUrl, items, onComplete }: Ca
         <div 
           className="absolute bottom-0 rounded-t-lg flex items-center justify-center text-primary-foreground font-bold overflow-hidden"
           style={{
-            left: basketX,
+            left: basketXState,
             width: BASKET_WIDTH,
             height: BASKET_HEIGHT,
             backgroundColor: basketImageUrl ? 'transparent' : 'hsl(var(--primary))',
