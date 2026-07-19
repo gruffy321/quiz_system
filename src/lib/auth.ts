@@ -28,7 +28,8 @@ export async function verifyToken(token: string) {
 
 export async function setStudentSession(studentId: string) {
   const token = await signToken({ studentId });
-  cookies().set({
+  const cookieStore = await cookies();
+  cookieStore.set({
     name: SESSION_COOKIE,
     value: token,
     httpOnly: true,
@@ -39,18 +40,21 @@ export async function setStudentSession(studentId: string) {
 }
 
 export async function getStudentSession() {
-  const token = cookies().get(SESSION_COOKIE)?.value;
+  const cookieStore = await cookies();
+  const token = cookieStore.get(SESSION_COOKIE)?.value;
   if (!token) return null;
   return await verifyToken(token);
 }
 
 export async function clearStudentSession() {
-  cookies().delete(SESSION_COOKIE);
+  const cookieStore = await cookies();
+  cookieStore.delete(SESSION_COOKIE);
 }
 
 export async function setAdminSession() {
   const token = await signToken({ admin: true });
-  cookies().set({
+  const cookieStore = await cookies();
+  cookieStore.set({
     name: ADMIN_COOKIE,
     value: token,
     httpOnly: true,
@@ -61,11 +65,13 @@ export async function setAdminSession() {
 }
 
 export async function getAdminSession() {
-  const token = cookies().get(ADMIN_COOKIE)?.value;
+  const cookieStore = await cookies();
+  const token = cookieStore.get(ADMIN_COOKIE)?.value;
   if (!token) return null;
   return await verifyToken(token);
 }
 
 export async function clearAdminSession() {
-  cookies().delete(ADMIN_COOKIE);
+  const cookieStore = await cookies();
+  cookieStore.delete(ADMIN_COOKIE);
 }
