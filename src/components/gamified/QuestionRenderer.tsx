@@ -5,6 +5,7 @@ import { Question } from '@/schema/QuizModule';
 import { DragAndDropBoard } from './DragAndDropBoard';
 import { UserPrompt } from '@/components/common/UserPrompt';
 import { Alert } from '@/components/common/Alert';
+import { useSession } from './SessionProvider';
 
 interface QuestionRendererProps {
   question: Question;
@@ -13,10 +14,26 @@ interface QuestionRendererProps {
 export const QuestionRenderer: React.FC<QuestionRendererProps> = ({ question }) => {
   const [isCompleted, setIsCompleted] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  const { sessionId } = useSession();
 
-  const handleComplete = () => {
+  const handleComplete = async (incorrectAttempts: number = 0) => {
     setErrorMsg('');
     setIsCompleted(true);
+    
+    // Fire and forget metric logging
+    if (sessionId) {
+      fetch('/api/metrics', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          sessionId,
+          questionId: question.id,
+          incorrectAttempts,
+          isCorrect: true, // They finally got it right
+          timeTakenSeconds: 0, // Placeholder for future timer
+        }),
+      }).catch(err => console.error('Metric sync failed:', err));
+    }
   };
 
   const handleFillInTheBlankSubmit = (input: string) => {
@@ -25,14 +42,26 @@ export const QuestionRenderer: React.FC<QuestionRendererProps> = ({ question }) 
       const inputLower = input.toLowerCase();
       const matchedKeywords = question.expectedKeywords.filter(kw => inputLower.includes(kw.toLowerCase()));
       
-      // We require at least 50% of the keywords to be present (forgiving evaluation)
       const threshold = Math.ceil(question.expectedKeywords.length / 2);
       if (matchedKeywords.length < threshold) {
         setErrorMsg(`Your answer is missing key concepts. Try to include terminology related to: ${question.expectedKeywords.join(', ')}`);
+        // Track the failed attempt
+        if (sessionId) {
+           fetch('/api/metrics', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              sessionId,
+              questionId: question.id,
+              incorrectAttempts: 1,
+              isCorrect: false, 
+            }),
+          }).catch(console.error);
+        }
         return;
       }
     }
-    handleComplete();
+    handleComplete(0);
   };
 
   const renderContent = () => {
@@ -42,7 +71,7 @@ export const QuestionRenderer: React.FC<QuestionRendererProps> = ({ question }) 
           <DragAndDropBoard 
             draggables={question.draggables} 
             dropZones={question.dropZones} 
-            onComplete={handleComplete} 
+            onComplete={(attempts) => handleComplete(attempts)} 
           />
         );
       case 'fill_in_the_blank':

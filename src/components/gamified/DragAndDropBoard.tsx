@@ -66,7 +66,7 @@ const DropZone = ({ id, imageUrl, children }: DropZoneProps) => {
 interface DragAndDropBoardProps {
   draggables: { id: string; label: string }[];
   dropZones: { id: string; expectedDraggableId: string; imageUrl?: string }[];
-  onComplete: () => void;
+  onComplete: (attempts: number) => void;
 }
 
 export const DragAndDropBoard: React.FC<DragAndDropBoardProps> = ({ draggables, dropZones, onComplete }) => {
@@ -112,8 +112,9 @@ export const DragAndDropBoard: React.FC<DragAndDropBoardProps> = ({ draggables, 
         const nextLocations = { ...itemLocations, [draggableId]: targetZoneId };
         const allCorrect = dropZones.every(z => nextLocations[z.expectedDraggableId] === z.id);
         if (allCorrect) {
-          console.log(`Challenge Completed. Incorrect Attempts: ${incorrectAttempts + (targetZone.expectedDraggableId !== draggableId ? 1 : 0)}`);
-          onComplete();
+          const finalAttempts = incorrectAttempts + (targetZone.expectedDraggableId !== draggableId ? 1 : 0);
+          console.log(`Challenge Completed. Incorrect Attempts: ${finalAttempts}`);
+          onComplete(finalAttempts);
         }
       }
     }

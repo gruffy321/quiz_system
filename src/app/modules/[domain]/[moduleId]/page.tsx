@@ -3,6 +3,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { QuizModule } from "@/schema/QuizModule";
 import { QuestionRenderer } from "@/components/gamified/QuestionRenderer";
+import { SessionProvider } from "@/components/gamified/SessionProvider";
 
 interface ModulePageProps {
   params: Promise<{
@@ -30,11 +31,13 @@ export default async function ModulePage({ params }: ModulePageProps) {
         <p className="text-gray-600">{moduleData.description}</p>
       </div>
       
-      <div className="space-y-12">
-        {moduleData.questions.map((question) => (
-          <QuestionRenderer key={question.id} question={question as any} />
-        ))}
-      </div>
+      <SessionProvider domain={domain} moduleId={moduleId}>
+        <div className="space-y-12">
+          {moduleData.questions.map((question) => (
+            <QuestionRenderer key={question.id} question={question as any} />
+          ))}
+        </div>
+      </SessionProvider>
     </div>
   );
 }
