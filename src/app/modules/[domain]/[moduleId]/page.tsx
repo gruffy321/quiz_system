@@ -1,9 +1,10 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import fs from 'fs/promises';
 import path from 'path';
 import { QuizModule } from "@/schema/QuizModule";
 import { QuestionRenderer } from "@/components/gamified/QuestionRenderer";
 import { SessionProvider } from "@/components/gamified/SessionProvider";
+import { getStudentSession } from "@/lib/auth";
 
 interface ModulePageProps {
   params: Promise<{
@@ -13,6 +14,11 @@ interface ModulePageProps {
 }
 
 export default async function ModulePage({ params }: ModulePageProps) {
+  const session = await getStudentSession();
+  if (!session?.studentId) {
+    redirect('/login');
+  }
+
   const { domain, moduleId } = await params;
 
   let moduleData: QuizModule | null = null;
