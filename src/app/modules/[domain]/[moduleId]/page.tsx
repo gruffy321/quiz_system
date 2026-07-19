@@ -27,6 +27,10 @@ export default async function ModulePage({ params }: ModulePageProps) {
     const fileContents = await fs.readFile(filePath, 'utf8');
     moduleData = JSON.parse(fileContents);
   } catch (error) {
+    console.error("Failed to load module:", error);
+  }
+
+  if (!moduleData) {
     notFound();
   }
 
