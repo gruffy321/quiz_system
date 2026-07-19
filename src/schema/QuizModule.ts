@@ -1,4 +1,4 @@
-export type QuestionType = 'multiple_choice' | 'drag_and_drop' | 'fill_in_the_blank' | 'sequence_builder' | 'matching_pairs';
+export type QuestionType = 'multiple_choice' | 'drag_and_drop' | 'fill_in_the_blank' | 'sequence_builder' | 'matching_pairs' | 'catch_game';
 
 export interface BaseQuestion {
   id: string;
@@ -37,7 +37,21 @@ export interface MatchingQuestion extends BaseQuestion {
   correctMatches: { leftId: string; rightId: string }[];
 }
 
-export type Question = MultipleChoiceQuestion | FillInTheBlankQuestion | DragAndDropQuestion | SequenceQuestion | MatchingQuestion;
+export interface CatchItem {
+  id: string;
+  text: string;
+  isTarget: boolean;
+  explanation: string;
+  imageUrl?: string;
+}
+
+export interface CatchGameQuestion extends BaseQuestion {
+  type: 'catch_game';
+  basketLabel: string;
+  items: CatchItem[];
+}
+
+export type Question = MultipleChoiceQuestion | FillInTheBlankQuestion | DragAndDropQuestion | SequenceQuestion | MatchingQuestion | CatchGameQuestion;
 
 export interface QuizModule {
   id?: string; // Some JSONs use id instead of moduleId

@@ -5,35 +5,59 @@
   "description": "Identify Personal Protective Equipment and understand what each item protects against.",
   "questions": [
     {
-      "id": "q1_ppe_names",
-      "type": "drag_and_drop",
-      "prompt": "Identify the correct name for each piece of PPE.",
-      "points": 10,
-      "draggables": [
-        { "id": "glasses", "label": "Safety Glasses" },
-        { "id": "ear", "label": "Ear Defenders" },
-        { "id": "boots", "label": "Safety Boots" },
-        { "id": "hivis", "label": "Hi-Vis Vest" },
-        { "id": "gloves", "label": "Gloves" },
-        { "id": "hardhat", "label": "Hard Hat" },
-        { "id": "mask", "label": "Dust Mask" }
-      ],
-      "dropZones": [
-        { "id": "dz_glasses", "expectedDraggableId": "glasses", "imageUrl": "/assets/engineering/ws6/img_1_2.jpeg" },
-        { "id": "dz_ear", "expectedDraggableId": "ear", "imageUrl": "/assets/engineering/ws6/img_1_3.jpeg" },
-        { "id": "dz_boots", "expectedDraggableId": "boots", "imageUrl": "/assets/engineering/ws6/img_1_4.jpeg" },
-        { "id": "dz_hivis", "expectedDraggableId": "hivis", "imageUrl": "/assets/engineering/ws6/img_2_6.jpeg" },
-        { "id": "dz_gloves", "expectedDraggableId": "gloves", "imageUrl": "/assets/engineering/ws6/img_2_7.jpeg" },
-        { "id": "dz_hardhat", "expectedDraggableId": "hardhat", "imageUrl": "/assets/engineering/ws6/img_2_8.jpeg" },
-        { "id": "dz_mask", "expectedDraggableId": "mask", "imageUrl": "/assets/engineering/ws6/img_2_9.jpeg" }
+      "id": "q1_ppe_catch",
+      "type": "catch_game",
+      "prompt": "Catch the necessary Personal Protective Equipment (PPE) required to safely enter the workshop, but avoid catching any hazards!",
+      "points": 20,
+      "basketLabel": "Workshop Entry",
+      "items": [
+        {
+          "id": "item_glasses",
+          "text": "Safety Glasses",
+          "imageUrl": "/assets/engineering/ws6/img_1_2.jpeg",
+          "isTarget": true,
+          "explanation": "Safety Glasses protect your eyes from flying debris, sparks, and chemical splashes."
+        },
+        {
+          "id": "item_ear",
+          "text": "Ear Defenders",
+          "imageUrl": "/assets/engineering/ws6/img_1_3.jpeg",
+          "isTarget": true,
+          "explanation": "Ear Defenders are essential when working around loud machinery to prevent long-term hearing loss."
+        },
+        {
+          "id": "item_boots",
+          "text": "Safety Boots",
+          "imageUrl": "/assets/engineering/ws6/img_1_4.jpeg",
+          "isTarget": true,
+          "explanation": "Steel-toe Safety Boots protect your feet from heavy falling objects and sharp materials."
+        },
+        {
+          "id": "item_hivis",
+          "text": "Hi-Vis Vest",
+          "imageUrl": "/assets/engineering/ws6/img_2_6.jpeg",
+          "isTarget": true,
+          "explanation": "High-Visibility Clothing ensures you are easily seen by vehicle operators and colleagues."
+        },
+        {
+          "id": "item_flipflops",
+          "text": "Flip Flops",
+          "isTarget": false,
+          "explanation": "Flip Flops expose your feet to heavy falling objects, sharp swarf, and chemical spills! Never wear open-toed shoes in a workshop."
+        },
+        {
+          "id": "item_loose_tie",
+          "text": "Loose Necktie",
+          "isTarget": false,
+          "explanation": "Loose clothing and ties can get caught in rotating machinery like lathes or drills, causing catastrophic injuries."
+        },
+        {
+          "id": "item_headphones",
+          "text": "Music Headphones",
+          "isTarget": false,
+          "explanation": "Listening to music prevents you from hearing fire alarms, warnings from colleagues, or the sound of failing machinery."
+        }
       ]
-    },
-    {
-      "id": "q2_protects",
-      "type": "fill_in_the_blank",
-      "prompt": "Why is it important to use appropriate PPE at all times?",
-      "points": 5,
-      "expectedKeywords": ["protect", "injury", "harm", "safe", "risk", "hazard"]
     }
   ]
 }

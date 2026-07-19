@@ -8,6 +8,7 @@ import { Alert } from '@/components/common/Alert';
 import { useSession } from './SessionProvider';
 import { SequenceBuilder } from './SequenceBuilder';
 import { MatchingPairs } from './MatchingPairs';
+import { CatchGame } from './CatchGame';
 
 interface QuestionRendererProps {
   question: Question;
@@ -109,6 +110,14 @@ export const QuestionRenderer: React.FC<QuestionRendererProps> = ({ question }) 
             leftItems={question.leftItems}
             rightItems={question.rightItems}
             correctMatches={question.correctMatches}
+            onComplete={(attempts) => handleComplete(attempts)}
+          />
+        );
+      case 'catch_game':
+        return (
+          <CatchGame
+            basketLabel={question.basketLabel}
+            items={question.items}
             onComplete={(attempts) => handleComplete(attempts)}
           />
         );
