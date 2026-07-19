@@ -55,7 +55,7 @@ function parseWS1() {
         type: "fill_in_the_blank",
         prompt: task2Prompt,
         points: 5,
-        correctAnswer: "To prevent harm to people, animals, and the environment." // Placeholder answer for testing strict validation
+        expectedKeywords: ["prevent", "harm", "environment"] // Keyword threshold validation
       }
     ]
   };

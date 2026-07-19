@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model Student {
+  id        String    @id @default(uuid())
+  createdAt DateTime  @default(now())
+  sessions  Session[]
+}
+
+model Session {
+  id        String   @id @default(uuid())
+  studentId String
+  moduleId  String   // e.g., "ws1"
+  domain    String   // e.g., "engineering"
+  startTime DateTime @default(now())
+  endTime   DateTime?
+  
+  student   Student  @relation(fields: [studentId], references: [id])
+  metrics   QuestionMetric[]
+}
+
+model QuestionMetric {
+  id                String   @id @default(uuid())
+  sessionId         String
+  questionId        String
+  incorrectAttempts Int      @default(0)
+  timeTakenSeconds  Int      @default(0)
+  isCorrect         Boolean  @default(false)
+  
+  session           Session  @relation(fields: [sessionId], references: [id])
+}

@@ -21,9 +21,14 @@ export const QuestionRenderer: React.FC<QuestionRendererProps> = ({ question }) 
 
   const handleFillInTheBlankSubmit = (input: string) => {
     setErrorMsg('');
-    if (question.type === 'fill_in_the_blank' && question.correctAnswer) {
-      if (input.trim().toLowerCase() !== question.correctAnswer.toLowerCase()) {
-        setErrorMsg('Incorrect answer. Please try again.');
+    if (question.type === 'fill_in_the_blank' && question.expectedKeywords) {
+      const inputLower = input.toLowerCase();
+      const matchedKeywords = question.expectedKeywords.filter(kw => inputLower.includes(kw.toLowerCase()));
+      
+      // We require at least 50% of the keywords to be present (forgiving evaluation)
+      const threshold = Math.ceil(question.expectedKeywords.length / 2);
+      if (matchedKeywords.length < threshold) {
+        setErrorMsg(`Your answer is missing key concepts. Try to include terminology related to: ${question.expectedKeywords.join(', ')}`);
         return;
       }
     }

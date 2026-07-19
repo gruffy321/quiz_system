@@ -100,7 +100,11 @@
       "type": "fill_in_the_blank",
       "prompt": "Explain why it is necessary to dispose of waste chemicals safely.",
       "points": 5,
-      "correctAnswer": "To prevent harm to people, animals, and the environment."
+      "expectedKeywords": [
+        "prevent",
+        "harm",
+        "environment"
+      ]
     }
   ]
 }

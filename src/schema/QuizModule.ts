@@ -15,7 +15,7 @@ export interface MultipleChoiceQuestion extends BaseQuestion {
 
 export interface FillInTheBlankQuestion extends BaseQuestion {
   type: 'fill_in_the_blank';
-  correctAnswer?: string;
+  expectedKeywords?: string[]; // Used for forgiving, keyword-based evaluation
 }
 
 export interface DragAndDropQuestion extends BaseQuestion {

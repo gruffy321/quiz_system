@@ -6,12 +6,19 @@ import { DndContext, DragEndEvent, useDraggable, useDroppable } from '@dnd-kit/c
 interface DraggableItemProps {
   id: string;
   label: string;
-  isMatched: boolean;
+  status: 'pool' | 'correct' | 'incorrect';
 }
 
-const DraggableItem = ({ id, label, isMatched }: DraggableItemProps) => {
-  const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({ id, disabled: isMatched });
+const DraggableItem = ({ id, label, status }: DraggableItemProps) => {
+  const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({ id });
   const style = transform ? { transform: `translate3d(${transform.x}px, ${transform.y}px, 0)` } : undefined;
+
+  let colorClasses = 'bg-card border-border text-foreground hover:bg-primary/5';
+  if (status === 'correct') {
+    colorClasses = 'bg-green-100 border-green-500 text-green-800 dark:bg-green-900/50 dark:border-green-600 dark:text-green-300';
+  } else if (status === 'incorrect') {
+    colorClasses = 'bg-red-100 border-red-500 text-red-800 dark:bg-red-900/50 dark:border-red-600 dark:text-red-300';
+  }
 
   return (
     <div
@@ -19,11 +26,9 @@ const DraggableItem = ({ id, label, isMatched }: DraggableItemProps) => {
       style={style}
       {...listeners}
       {...attributes}
-      className={`p-3 m-2 border rounded-md cursor-grab shadow-sm transition-colors ${
-        isMatched 
-          ? 'bg-green-100 border-green-500 text-green-800 dark:bg-green-900/50 dark:border-green-600 dark:text-green-300' 
-          : 'bg-card border-border text-foreground hover:bg-primary/5'
-      } ${isDragging ? 'opacity-50' : 'opacity-100'}`}
+      className={`p-3 border rounded-md cursor-grab shadow-sm transition-colors ${colorClasses} ${
+        isDragging ? 'opacity-50 z-50 relative' : 'opacity-100'
+      }`}
     >
       {label}
     </div>
@@ -32,28 +37,27 @@ const DraggableItem = ({ id, label, isMatched }: DraggableItemProps) => {
 
 interface DropZoneProps {
   id: string;
-  matchedLabel?: string;
   imageUrl?: string;
+  children?: React.ReactNode;
 }
 
-const DropZone = ({ id, matchedLabel, imageUrl }: DropZoneProps) => {
+const DropZone = ({ id, imageUrl, children }: DropZoneProps) => {
   const { isOver, setNodeRef } = useDroppable({ id });
 
   return (
     <div className="flex flex-col items-center gap-2 m-2">
       {imageUrl && (
         <div className="w-24 h-24 flex items-center justify-center rounded-sm">
-          {/* We will use a standard img tag here, relying on public/ folder static assets */}
           <img src={imageUrl} alt="Hazard Symbol" className="w-20 h-20 object-contain" />
         </div>
       )}
       <div
         ref={setNodeRef}
-        className={`p-4 w-40 h-16 border-2 border-dashed rounded-md flex items-center justify-center text-sm text-center transition-colors ${
+        className={`p-2 w-40 h-16 border-2 border-dashed rounded-md flex items-center justify-center text-sm text-center transition-colors ${
           isOver ? 'bg-primary/10 border-primary' : 'bg-card border-border'
-        } ${matchedLabel ? 'bg-green-50 border-green-400 text-green-700 font-medium dark:bg-green-900/30 dark:border-green-600 dark:text-green-400' : 'text-foreground/50'}`}
+        }`}
       >
-        {matchedLabel || 'Drop Label Here'}
+        {children || <span className="text-foreground/50">Drop Here</span>}
       </div>
     </div>
   );
@@ -67,7 +71,9 @@ interface DragAndDropBoardProps {
 
 export const DragAndDropBoard: React.FC<DragAndDropBoardProps> = ({ draggables, dropZones, onComplete }) => {
   const [isMounted, setIsMounted] = React.useState(false);
-  const [matches, setMatches] = useState<Record<string, string>>({}); // dropZoneId -> draggableLabel
+  // Map draggable.id -> dropZone.id (or null if in pool)
+  const [itemLocations, setItemLocations] = useState<Record<string, string | null>>({});
+  const [incorrectAttempts, setIncorrectAttempts] = useState(0);
 
   React.useEffect(() => {
     setIsMounted(true);
@@ -75,46 +81,83 @@ export const DragAndDropBoard: React.FC<DragAndDropBoardProps> = ({ draggables, 
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
-    if (!over) return;
-    
-    const draggable = draggables.find(d => d.id === active.id);
-    const targetZone = dropZones.find(z => z.id === over.id);
-    
-    // STRICT VALIDATION: Only allow match if the active draggable matches the target zone's expectedDraggableId
-    if (draggable && targetZone && targetZone.expectedDraggableId === draggable.id && !matches[over.id]) {
-      const newMatches = { ...matches, [over.id]: draggable.label };
-      setMatches(newMatches);
+    const draggableId = active.id as string;
 
-      if (Object.keys(newMatches).length === draggables.length) {
-        onComplete();
+    if (!over) {
+      // Returned to pool
+      setItemLocations(prev => ({ ...prev, [draggableId]: null }));
+      return;
+    }
+
+    const targetZoneId = over.id as string;
+    const targetZone = dropZones.find(z => z.id === targetZoneId);
+    
+    if (targetZone) {
+      // If there's already an item in this zone, swap it back to the pool
+      const existingOccupantId = Object.keys(itemLocations).find(id => itemLocations[id] === targetZoneId);
+      
+      setItemLocations(prev => {
+        const next = { ...prev, [draggableId]: targetZoneId };
+        if (existingOccupantId && existingOccupantId !== draggableId) {
+          next[existingOccupantId] = null;
+        }
+        return next;
+      });
+
+      // Track metric
+      if (targetZone.expectedDraggableId !== draggableId) {
+        setIncorrectAttempts(prev => prev + 1);
+      } else {
+        // Check if all are correct
+        const nextLocations = { ...itemLocations, [draggableId]: targetZoneId };
+        const allCorrect = dropZones.every(z => nextLocations[z.expectedDraggableId] === z.id);
+        if (allCorrect) {
+          console.log(`Challenge Completed. Incorrect Attempts: ${incorrectAttempts + (targetZone.expectedDraggableId !== draggableId ? 1 : 0)}`);
+          onComplete();
+        }
       }
     }
   };
-
-  const isMatched = (id: string) => Object.values(matches).includes(draggables.find(d => d.id === id)?.label || '');
 
   if (!isMounted) {
     return <div className="p-6 bg-card rounded-lg shadow-sm border border-border h-64 flex items-center justify-center text-foreground/50">Loading Challenge...</div>;
   }
 
+  // Items in the pool
+  const poolItems = draggables.filter(d => !itemLocations[d.id]);
+
   return (
     <DndContext onDragEnd={handleDragEnd}>
       <div className="flex flex-col gap-8 p-6 bg-card rounded-lg shadow-sm border border-border">
         
-        {/* Drop Zones (The "Boxes") */}
+        {/* Drop Zones */}
         <div className="flex flex-wrap justify-center gap-4">
-          {dropZones.map((zone) => (
-            <DropZone key={zone.id} id={zone.id} matchedLabel={matches[zone.id]} imageUrl={zone.imageUrl} />
-          ))}
+          {dropZones.map((zone) => {
+            const occupantId = Object.keys(itemLocations).find(id => itemLocations[id] === zone.id);
+            const occupant = draggables.find(d => d.id === occupantId);
+            
+            return (
+              <DropZone key={zone.id} id={zone.id} imageUrl={zone.imageUrl}>
+                {occupant && (
+                  <DraggableItem 
+                    id={occupant.id} 
+                    label={occupant.label} 
+                    status={occupant.id === zone.expectedDraggableId ? 'correct' : 'incorrect'} 
+                  />
+                )}
+              </DropZone>
+            );
+          })}
         </div>
 
-        <hr className="border-gray-100" />
+        <hr className="border-gray-100 dark:border-gray-800" />
 
-        {/* Draggables (The "Hazards") */}
-        <div className="flex flex-wrap justify-center gap-2">
-          {draggables.map((item) => (
-            <DraggableItem key={item.id} id={item.id} label={item.label} isMatched={isMatched(item.id)} />
+        {/* Draggables Pool */}
+        <div className="flex flex-wrap justify-center gap-2 min-h-16 p-4 border-2 border-dashed border-border rounded-lg bg-foreground/5">
+          {poolItems.map((item) => (
+            <DraggableItem key={item.id} id={item.id} label={item.label} status="pool" />
           ))}
+          {poolItems.length === 0 && <span className="text-sm text-foreground/40 self-center">No items left in pool</span>}
         </div>
 
       </div>
