@@ -1,0 +1,96 @@
+{
+  "moduleId": "ws1",
+  "domain": "engineering",
+  "title": "Hazardous Substances Symbols",
+  "description": "Classification, Packaging and Labelling of Dangerous substances Regulations",
+  "questions": [
+    {
+      "id": "q1_hazards",
+      "type": "drag_and_drop",
+      "prompt": "Complete the boxes with the correct hazards.",
+      "points": 9,
+      "draggables": [
+        {
+          "id": "drag_0",
+          "label": "toxic"
+        },
+        {
+          "id": "drag_1",
+          "label": "explosive"
+        },
+        {
+          "id": "drag_2",
+          "label": "oxidising"
+        },
+        {
+          "id": "drag_3",
+          "label": "corrosive"
+        },
+        {
+          "id": "drag_4",
+          "label": "dangerous to the environment"
+        },
+        {
+          "id": "drag_5",
+          "label": "flammable"
+        },
+        {
+          "id": "drag_6",
+          "label": "long term health hazard"
+        },
+        {
+          "id": "drag_7",
+          "label": "gas under pressure"
+        },
+        {
+          "id": "drag_8",
+          "label": "caution"
+        }
+      ],
+      "dropZones": [
+        {
+          "id": "drop_0",
+          "expectedDraggableId": "drag_0"
+        },
+        {
+          "id": "drop_1",
+          "expectedDraggableId": "drag_1"
+        },
+        {
+          "id": "drop_2",
+          "expectedDraggableId": "drag_2"
+        },
+        {
+          "id": "drop_3",
+          "expectedDraggableId": "drag_3"
+        },
+        {
+          "id": "drop_4",
+          "expectedDraggableId": "drag_4"
+        },
+        {
+          "id": "drop_5",
+          "expectedDraggableId": "drag_5"
+        },
+        {
+          "id": "drop_6",
+          "expectedDraggableId": "drag_6"
+        },
+        {
+          "id": "drop_7",
+          "expectedDraggableId": "drag_7"
+        },
+        {
+          "id": "drop_8",
+          "expectedDraggableId": "drag_8"
+        }
+      ]
+    },
+    {
+      "id": "q2_disposal",
+      "type": "fill_in_the_blank",
+      "prompt": "Explain why it is necessary to dispose of waste chemicals safely.",
+      "points": 5
+    }
+  ]
+}

@@ -1,4 +1,8 @@
 import { notFound } from "next/navigation";
+import fs from 'fs/promises';
+import path from 'path';
+import { QuizModule } from "@/schema/QuizModule";
+import { QuestionRenderer } from "@/components/gamified/QuestionRenderer";
 
 interface ModulePageProps {
   params: Promise<{
@@ -10,23 +14,26 @@ interface ModulePageProps {
 export default async function ModulePage({ params }: ModulePageProps) {
   const { domain, moduleId } = await params;
 
-  // In a real implementation, we would fetch the JSON file for this domain and moduleId
-  // For now, we stub this out to demonstrate the routing structure.
-  
-  if (!domain || !moduleId) {
+  let moduleData: QuizModule | null = null;
+  try {
+    const filePath = path.join(process.cwd(), `src/data/modules/${domain}/${moduleId}.json`);
+    const fileContents = await fs.readFile(filePath, 'utf8');
+    moduleData = JSON.parse(fileContents);
+  } catch (error) {
     notFound();
   }
 
   return (
-    <div className="container mx-auto p-8">
-      <h1 className="text-3xl font-bold mb-4 capitalize">{domain} Module: {moduleId}</h1>
-      <p className="text-gray-600 mb-8">
-        This is a placeholder for the domain-agnostic interactive learning module.
-      </p>
+    <div className="container mx-auto p-8 max-w-4xl">
+      <div className="mb-8 border-b pb-4">
+        <h1 className="text-3xl font-bold mb-2 capitalize">{moduleData.domain} Module: {moduleData.title}</h1>
+        <p className="text-gray-600">{moduleData.description}</p>
+      </div>
       
-      <div className="bg-white shadow-md rounded-lg p-6 border border-gray-200">
-        <h2 className="text-xl font-semibold mb-4">Challenge Area</h2>
-        <p className="italic text-gray-500">Interactive gamified components will mount here based on the parsed JSON schema.</p>
+      <div className="space-y-12">
+        {moduleData.questions.map((question) => (
+          <QuestionRenderer key={question.id} question={question as any} />
+        ))}
       </div>
     </div>
   );
