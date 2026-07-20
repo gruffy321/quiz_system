@@ -31,42 +31,48 @@
       "type": "fill_in_the_blank",
       "prompt": "Describe the difference between single and double cut files.",
       "points": 5,
-      "expectedKeywords": ["single", "one direction", "double", "criss", "cross", "two directions"]
+      "expectedKeywords": ["single", "one direction", "double", "criss", "cross", "two directions"],
+      "exampleContext": "Single cut files have teeth running in one direction, leaving a smoother finish. Double cut files have two sets of teeth crossing each other, removing material faster."
     },
     {
       "id": "q3_file_safety",
       "type": "fill_in_the_blank",
       "prompt": "Review the image of the file. List three checks you would make to ensure it is safe to use.",
       "points": 5,
-      "expectedKeywords": ["handle", "secure", "teeth", "clean", "damage"]
+      "expectedKeywords": ["handle", "secure", "teeth", "clean", "damage"],
+      "exampleContext": "Before using a file, you should check that the handle is secure, the teeth are clean (free of pinned material), and there is no obvious damage to the tool."
     },
     {
       "id": "q4_preparing",
       "type": "fill_in_the_blank",
       "prompt": "Describe how you would prepare material to be filed.",
       "points": 5,
-      "expectedKeywords": ["clean", "mark", "secure", "vice"]
+      "expectedKeywords": ["clean", "mark", "secure", "vice"],
+      "exampleContext": "Preparing material involves cleaning the surface, marking out where you need to file, and securing it firmly in a vice."
     },
     {
       "id": "q5_soft_jaws",
       "type": "fill_in_the_blank",
       "prompt": "Explain what soft jaws / vice jaw plates are used for and the consequences of not using them.",
       "points": 5,
-      "expectedKeywords": ["protect", "damage", "workpiece", "surface", "mark"]
+      "expectedKeywords": ["protect", "damage", "workpiece", "surface", "mark"],
+      "exampleContext": "Soft jaws (vice jaw plates) protect the workpiece from being damaged or marked by the hard, serrated jaws of the vice."
     },
     {
       "id": "q6_tech_flat",
       "type": "fill_in_the_blank",
       "prompt": "State the tool and technique required to achieve a flat surface.",
       "points": 5,
-      "expectedKeywords": ["flat file", "cross", "filing"]
+      "expectedKeywords": ["flat file", "cross", "filing"],
+      "exampleContext": "To achieve a flat surface, use a flat file and apply the cross-filing technique (moving the file diagonally across the workpiece)."
     },
     {
       "id": "q7_tech_smooth",
       "type": "fill_in_the_blank",
       "prompt": "State the tool and technique required to achieve a smooth surface finish.",
       "points": 5,
-      "expectedKeywords": ["draw", "filing", "smooth"]
+      "expectedKeywords": ["draw", "filing", "smooth"],
+      "exampleContext": "To achieve a smooth surface finish, use the draw-filing technique, holding the file at both ends and pushing it sideways along the work."
     }
   ]
 }

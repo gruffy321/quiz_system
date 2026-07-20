@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { DndContext, DragEndEvent, useDraggable, useDroppable } from '@dnd-kit/core';
+import { LightboxImage } from '@/components/ui/LightboxImage';
 
 interface DraggableItemProps {
   id: string;
@@ -48,7 +49,7 @@ const DropZone = ({ id, imageUrl, children }: DropZoneProps) => {
     <div className="flex flex-col items-center gap-4 m-2 flex-1 min-w-[140px] max-w-[240px]">
       {imageUrl && (
         <div className="w-full h-24 md:h-32 flex items-center justify-center rounded-sm">
-          <img src={imageUrl} alt="Diagram" className="max-w-full max-h-full object-contain drop-shadow-sm" />
+          <LightboxImage src={imageUrl} alt="Diagram" className="max-w-full max-h-full" />
         </div>
       )}
       <div

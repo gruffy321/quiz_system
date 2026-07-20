@@ -2,7 +2,7 @@ import { notFound, redirect } from "next/navigation";
 import fs from 'fs/promises';
 import path from 'path';
 import { QuizModule } from "@/schema/QuizModule";
-import { QuestionRenderer } from "@/components/gamified/QuestionRenderer";
+import { ModuleRunner } from "@/components/gamified/ModuleRunner";
 import { SessionProvider } from "@/components/gamified/SessionProvider";
 import { getStudentSession } from "@/lib/auth";
 
@@ -42,11 +42,7 @@ export default async function ModulePage({ params }: ModulePageProps) {
       </div>
       
       <SessionProvider domain={domain} moduleId={moduleId}>
-        <div className="space-y-12">
-          {moduleData.questions.map((question) => (
-            <QuestionRenderer key={question.id} question={question as any} />
-          ))}
-        </div>
+        <ModuleRunner questions={moduleData.questions as any} />
       </SessionProvider>
     </div>
   );

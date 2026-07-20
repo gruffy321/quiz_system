@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { LightboxImage } from '@/components/ui/LightboxImage';
 import { CatchItem } from '@/schema/QuizModule';
 import { Alert } from '@/components/common/Alert';
 
@@ -265,7 +266,7 @@ export function CatchGame({ basketLabel, basketImageUrl, items, onComplete }: Ca
             }}
           >
             {item.data.imageUrl ? (
-              <img src={item.data.imageUrl} alt={item.data.text} className="w-full h-full object-cover" />
+              <LightboxImage src={item.data.imageUrl} alt={item.data.text} className="w-full h-full" />
             ) : (
               <span className="text-xs font-bold text-center px-1 leading-tight">{item.data.text}</span>
             )}
@@ -284,7 +285,7 @@ export function CatchGame({ basketLabel, basketImageUrl, items, onComplete }: Ca
           }}
         >
           {basketImageUrl ? (
-            <img src={basketImageUrl} alt={basketLabel} className="w-full h-full object-contain object-bottom pointer-events-none" />
+            <LightboxImage src={basketImageUrl} alt={basketLabel} className="w-full h-full" />
           ) : (
             <span>{basketLabel}</span>
           )}

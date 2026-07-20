@@ -4,11 +4,13 @@ import { QuizModule, Question } from '@/schema/QuizModule';
 export function WorksheetRenderer({ 
   moduleData, 
   studentName, 
-  date 
+  date,
+  metrics
 }: { 
   moduleData: QuizModule,
   studentName?: string,
-  date?: string
+  date?: string,
+  metrics?: any[]
 }) {
   return (
     <div className="w-full max-w-[210mm] mx-auto bg-white p-8 mb-8 print:mb-0 print:p-0 print:shadow-none shadow-lg text-black font-sans">
@@ -22,12 +24,15 @@ export function WorksheetRenderer({
       </div>
 
       <div className="space-y-8">
-        {moduleData.questions.map((q, idx) => (
-          <div key={q.id} className="border border-gray-300 p-4 rounded-sm print:break-inside-avoid">
-            <h2 className="text-lg font-bold mb-4">{idx + 1}. {q.prompt}</h2>
-            <QuestionStaticRenderer question={q} />
-          </div>
-        ))}
+        {moduleData.questions.map((q, idx) => {
+          const metric = metrics?.find(m => m.questionId === q.id);
+          return (
+            <div key={q.id} className="border border-gray-300 p-4 rounded-sm print:break-inside-avoid">
+              <h2 className="text-lg font-bold mb-4">{idx + 1}. {q.prompt}</h2>
+              <QuestionStaticRenderer question={q} metric={metric} />
+            </div>
+          );
+        })}
       </div>
       
       <div className="mt-12 text-center text-sm text-gray-500 print:block hidden">
@@ -37,7 +42,7 @@ export function WorksheetRenderer({
   );
 }
 
-function QuestionStaticRenderer({ question }: { question: Question }) {
+function QuestionStaticRenderer({ question, metric }: { question: Question, metric?: any }) {
   switch (question.type) {
     case 'multiple_choice':
       return (
@@ -58,9 +63,14 @@ function QuestionStaticRenderer({ question }: { question: Question }) {
 
     case 'fill_in_the_blank':
       return (
-        <div className="pl-4">
-          <p className="text-gray-700">
-            <strong>Expected Answer(s):</strong> {question.expectedKeywords?.join(', ')}
+        <div className="pl-4 space-y-2">
+          {metric?.userAnswerData && (
+            <p className="text-gray-900 text-lg">
+              <strong>Student Answer:</strong> {String(metric.userAnswerData)}
+            </p>
+          )}
+          <p className="text-gray-500 text-sm">
+            <strong>Expected Keywords:</strong> {question.expectedKeywords?.join(', ')}
           </p>
         </div>
       );

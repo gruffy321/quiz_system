@@ -47,7 +47,7 @@ export default async function StudentReportPage({ params }: ReportPageProps) {
       const filePath = path.join(process.cwd(), `src/data/modules/${domain}/${moduleId}.json`);
       const fileContents = await fs.readFile(filePath, 'utf8');
       const moduleData = JSON.parse(fileContents);
-      moduleDataList.push({ moduleData, date: sessionForModule?.endTime || sessionForModule?.startTime });
+      moduleDataList.push({ moduleData, date: sessionForModule?.endTime || sessionForModule?.startTime, sessionForModule });
     } catch (error) {
       console.error(`Failed to load module data for ${moduleId}`, error);
     }
@@ -71,12 +71,13 @@ export default async function StudentReportPage({ params }: ReportPageProps) {
             No completed modules found for this student.
           </div>
         ) : (
-          moduleDataList.map(({ moduleData, date }, idx) => (
+          moduleDataList.map(({ moduleData, date, sessionForModule }, idx) => (
             <div key={idx} className="print:break-after-page">
               <WorksheetRenderer 
                 moduleData={moduleData} 
                 studentName={studentName}
                 date={date ? new Date(date).toLocaleDateString() : new Date().toLocaleDateString()}
+                metrics={sessionForModule?.metrics}
               />
             </div>
           ))

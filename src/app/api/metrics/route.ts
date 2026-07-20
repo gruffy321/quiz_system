@@ -10,7 +10,7 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const { sessionId, questionId, incorrectAttempts, isCorrect, timeTakenSeconds } = body;
+    const { sessionId, questionId, incorrectAttempts, isCorrect, timeTakenSeconds, userAnswerData } = body;
 
     if (!sessionId || !questionId) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
@@ -33,6 +33,7 @@ export async function POST(request: Request) {
         incorrectAttempts: incorrectAttempts || 0,
         isCorrect: isCorrect || false,
         timeTakenSeconds: timeTakenSeconds || 0,
+        userAnswerData: userAnswerData || null,
       },
     });
 

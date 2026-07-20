@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef, useLayoutEffect, useCallback } from 'react';
 import { CheckCircle2, XCircle } from 'lucide-react';
+import { LightboxImage } from '@/components/ui/LightboxImage';
 
 interface MatchingPairsProps {
   leftItems: { id: string; text: string; imageUrl?: string }[];
@@ -224,7 +225,7 @@ export function MatchingPairs({ leftItems, rightItems, correctMatches, onComplet
                 className={`p-4 border-2 rounded-xl shadow-sm transition-all duration-200 h-[90px] flex items-center justify-center text-center relative ${stateClasses}`}
               >
                 {item.imageUrl ? (
-                  <img src={item.imageUrl} alt={item.text} className="h-full max-h-[60px] object-contain pointer-events-none drop-shadow-md" />
+                  <LightboxImage src={item.imageUrl} alt={item.text} className="h-full max-h-[60px]" />
                 ) : (
                   <span className="font-bold text-lg">{item.text}</span>
                 )}

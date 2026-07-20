@@ -12,9 +12,10 @@ import { CatchGame } from './CatchGame';
 
 interface QuestionRendererProps {
   question: Question;
+  onQuestionComplete?: () => void;
 }
 
-export const QuestionRenderer: React.FC<QuestionRendererProps> = ({ question }) => {
+export const QuestionRenderer: React.FC<QuestionRendererProps> = ({ question, onQuestionComplete }) => {
   const [isCompleted, setIsCompleted] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const { sessionId } = useSession();
@@ -41,6 +42,10 @@ export const QuestionRenderer: React.FC<QuestionRendererProps> = ({ question }) 
       } catch (err) {
         console.error('Metric sync failed:', err);
       }
+    }
+    
+    if (onQuestionComplete) {
+      onQuestionComplete();
     }
   };
 
@@ -75,7 +80,28 @@ export const QuestionRenderer: React.FC<QuestionRendererProps> = ({ question }) 
         return;
       }
     }
-    handleComplete(0);
+    
+    // Fire and forget metric logging for the successful fill_in_the_blank with userAnswerData
+    if (sessionId) {
+      fetch('/api/metrics', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          sessionId,
+          questionId: question.id,
+          incorrectAttempts: 0,
+          isCorrect: true, 
+          timeTakenSeconds: 0,
+          userAnswerData: input,
+        }),
+      }).catch(console.error);
+    }
+    
+    setErrorMsg('');
+    setIsCompleted(true);
+    if (onQuestionComplete) {
+      onQuestionComplete();
+    }
   };
 
   const renderContent = () => {
