@@ -9,6 +9,7 @@ import { useSession } from './SessionProvider';
 import { SequenceBuilder } from './SequenceBuilder';
 import { MatchingPairs } from './MatchingPairs';
 import { CatchGame } from './CatchGame';
+import { QuestionContextModal } from '@/components/ui/QuestionContextModal';
 
 interface QuestionRendererProps {
   question: Question;
@@ -18,6 +19,7 @@ interface QuestionRendererProps {
 export const QuestionRenderer: React.FC<QuestionRendererProps> = ({ question, onQuestionComplete }) => {
   const [isCompleted, setIsCompleted] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  const [isContextModalOpen, setIsContextModalOpen] = useState(false);
   const { sessionId } = useSession();
 
   const handleComplete = async (incorrectAttempts: number = 0) => {
@@ -156,7 +158,19 @@ export const QuestionRenderer: React.FC<QuestionRendererProps> = ({ question, on
   return (
     <div className="mb-8">
       <div className="mb-4">
-        <h3 className="text-lg font-medium text-foreground">{question.prompt}</h3>
+        <div className="flex justify-between items-start mb-1">
+          <h3 className="text-lg font-medium text-foreground mr-4">{question.prompt}</h3>
+          {(question.imageUrl || question.exampleContext) && (
+            <button 
+              onClick={() => setIsContextModalOpen(true)}
+              className="flex-shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors text-sm font-medium border border-blue-200 dark:border-blue-800"
+              title="View visual context and hints"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              View Hint
+            </button>
+          )}
+        </div>
         <span className="text-sm text-foreground/70">Points: {question.points}</span>
       </div>
       
@@ -173,6 +187,14 @@ export const QuestionRenderer: React.FC<QuestionRendererProps> = ({ question, on
           <Alert title="Success!" message="You have completed this challenge." variant="success" />
         </div>
       )}
+
+      <QuestionContextModal 
+        isOpen={isContextModalOpen}
+        onClose={() => setIsContextModalOpen(false)}
+        imageUrl={question.imageUrl}
+        contextText={question.exampleContext}
+        promptTitle={question.prompt}
+      />
     </div>
   );
 };
