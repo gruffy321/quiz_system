@@ -64,3 +64,9 @@ The link for quick setup is :
 https://github.com/gruffy321/quiz_system.git
 
 Yes Pathway 1 first, we wil sequentilaly address each pathway in a fork tfo the main branch to keep review and editing focussed onteh context at hand, however... We must also consider at each stage homgenous and class condensoing where the use of multiple tools liek bespoke warnings, alert and messaging communications, text promoting user interactions, or profanity filters are modularised so they can be reused across the system without the need to rewrite implementation
+
+
+admin access to site on 
+http://sitename/admin/
+pass:
+quiz-admin-pass.SDUTC

@@ -88,6 +88,7 @@ export default async function AdminDashboard() {
                 <th className="p-4 font-medium">Student Name</th>
                 <th className="p-4 font-medium">Tutor Group</th>
                 <th className="p-4 font-medium">Created</th>
+                <th className="p-4 font-medium">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -104,11 +105,18 @@ export default async function AdminDashboard() {
                   <td className="p-4">{student.fullName || '-'}</td>
                   <td className="p-4">{student.tutorGroup || '-'}</td>
                   <td className="p-4 text-sm text-foreground/50">{student.createdAt.toLocaleDateString()}</td>
+                  <td className="p-4">
+                    {student.fullName ? (
+                      <a href={`/student/${student.joinCode}/report`} target="_blank" className="text-primary hover:underline text-sm font-medium">View Report</a>
+                    ) : (
+                      <span className="text-gray-400 text-sm">-</span>
+                    )}
+                  </td>
                 </tr>
               ))}
               {allStudents.length === 0 && (
                 <tr>
-                  <td colSpan={5} className="p-8 text-center text-foreground/50">
+                  <td colSpan={6} className="p-8 text-center text-foreground/50">
                     No access codes generated yet. Click "Generate 30 Join Codes" to start.
                   </td>
                 </tr>
