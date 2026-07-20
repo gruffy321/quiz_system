@@ -10,69 +10,144 @@
       "prompt": "Match the correct file name to its cross-section image.",
       "points": 10,
       "draggables": [
-        { "id": "flat", "label": "Flat file" },
-        { "id": "hand", "label": "Hand file" },
-        { "id": "round", "label": "Round file" },
-        { "id": "square", "label": "Square file" },
-        { "id": "threesquare", "label": "Three-square file" },
-        { "id": "halfround", "label": "Half-round file" }
+        {
+          "id": "flat",
+          "label": "Flat file"
+        },
+        {
+          "id": "hand",
+          "label": "Hand file"
+        },
+        {
+          "id": "round",
+          "label": "Round file"
+        },
+        {
+          "id": "square",
+          "label": "Square file"
+        },
+        {
+          "id": "threesquare",
+          "label": "Three-square file"
+        },
+        {
+          "id": "halfround",
+          "label": "Half-round file"
+        }
       ],
       "dropZones": [
-        { "id": "dz_flat", "expectedDraggableId": "flat", "imageUrl": "/assets/engineering/ws10/flat-file.svg" },
-        { "id": "dz_hand", "expectedDraggableId": "hand", "imageUrl": "/assets/engineering/ws10/hand-file.svg" },
-        { "id": "dz_round", "expectedDraggableId": "round", "imageUrl": "/assets/engineering/ws10/round-file.svg" },
-        { "id": "dz_square", "expectedDraggableId": "square", "imageUrl": "/assets/engineering/ws10/square-file.svg" },
-        { "id": "dz_threesquare", "expectedDraggableId": "threesquare", "imageUrl": "/assets/engineering/ws10/three-square-file.svg" },
-        { "id": "dz_halfround", "expectedDraggableId": "halfround", "imageUrl": "/assets/engineering/ws10/half-round-file.svg" }
-      ]
+        {
+          "id": "dz_flat",
+          "expectedDraggableId": "flat",
+          "imageUrl": "/assets/engineering/ws10/flat-file.svg"
+        },
+        {
+          "id": "dz_hand",
+          "expectedDraggableId": "hand",
+          "imageUrl": "/assets/engineering/ws10/hand-file.svg"
+        },
+        {
+          "id": "dz_round",
+          "expectedDraggableId": "round",
+          "imageUrl": "/assets/engineering/ws10/round-file.svg"
+        },
+        {
+          "id": "dz_square",
+          "expectedDraggableId": "square",
+          "imageUrl": "/assets/engineering/ws10/square-file.svg"
+        },
+        {
+          "id": "dz_threesquare",
+          "expectedDraggableId": "threesquare",
+          "imageUrl": "/assets/engineering/ws10/three-square-file.svg"
+        },
+        {
+          "id": "dz_halfround",
+          "expectedDraggableId": "halfround",
+          "imageUrl": "/assets/engineering/ws10/half-round-file.svg"
+        }
+      ],
+      "exampleContext": "Different jobs require different profiles, such as getting into a sharp corner versus smoothing a curved slot. Why are files manufactured with various cross-sections?"
     },
     {
       "id": "q2_file_cuts",
       "type": "fill_in_the_blank",
       "prompt": "Describe the difference between single and double cut files.",
       "points": 5,
-      "expectedKeywords": ["single", "one direction", "double", "criss", "cross", "two directions"],
-      "exampleContext": "Single cut files have teeth running in one direction, leaving a smoother finish. Double cut files have two sets of teeth crossing each other, removing material faster."
+      "expectedKeywords": [
+        "single",
+        "one direction",
+        "double",
+        "criss",
+        "cross",
+        "two directions"
+      ],
+      "exampleContext": "Some files are meant for heavy material removal, while others are for a fine finish. What is the physical difference in the teeth between a single and double cut file?"
     },
     {
       "id": "q3_file_safety",
       "type": "fill_in_the_blank",
       "prompt": "Review the image of the file. List three checks you would make to ensure it is safe to use.",
       "points": 5,
-      "expectedKeywords": ["handle", "secure", "teeth", "clean", "damage"],
-      "exampleContext": "Before using a file, you should check that the handle is secure, the teeth are clean (free of pinned material), and there is no obvious damage to the tool."
+      "expectedKeywords": [
+        "handle",
+        "secure",
+        "teeth",
+        "clean",
+        "damage"
+      ],
+      "exampleContext": "Before using any hand tool, it must be inspected. What specific parts of a file, especially the handle area, must be checked to ensure it is safe to use?"
     },
     {
       "id": "q4_preparing",
       "type": "fill_in_the_blank",
       "prompt": "Describe how you would prepare material to be filed.",
       "points": 5,
-      "expectedKeywords": ["clean", "mark", "secure", "vice"],
-      "exampleContext": "Preparing material involves cleaning the surface, marking out where you need to file, and securing it firmly in a vice."
+      "expectedKeywords": [
+        "clean",
+        "mark",
+        "secure",
+        "vice"
+      ],
+      "exampleContext": "Filing an unsecured piece of metal is dangerous and inaccurate. How should you prepare and secure your workpiece before you begin filing?"
     },
     {
       "id": "q5_soft_jaws",
       "type": "fill_in_the_blank",
       "prompt": "Explain what soft jaws / vice jaw plates are used for and the consequences of not using them.",
       "points": 5,
-      "expectedKeywords": ["protect", "damage", "workpiece", "surface", "mark"],
-      "exampleContext": "Soft jaws (vice jaw plates) protect the workpiece from being damaged or marked by the hard, serrated jaws of the vice."
+      "expectedKeywords": [
+        "protect",
+        "damage",
+        "workpiece",
+        "surface",
+        "mark"
+      ],
+      "exampleContext": "Clamping a finished aluminum part in a steel vice will crush and scratch it. What accessories should you use in the vice to protect delicate workpieces?"
     },
     {
       "id": "q6_tech_flat",
       "type": "fill_in_the_blank",
       "prompt": "State the tool and technique required to achieve a flat surface.",
       "points": 5,
-      "expectedKeywords": ["flat file", "cross", "filing"],
-      "exampleContext": "To achieve a flat surface, use a flat file and apply the cross-filing technique (moving the file diagonally across the workpiece)."
+      "expectedKeywords": [
+        "flat file",
+        "cross",
+        "filing"
+      ],
+      "exampleContext": "Filing a perfectly flat surface by hand requires a specific technique. What motion and grip should you use to avoid creating a curved surface?"
     },
     {
       "id": "q7_tech_smooth",
       "type": "fill_in_the_blank",
       "prompt": "State the tool and technique required to achieve a smooth surface finish.",
       "points": 5,
-      "expectedKeywords": ["draw", "filing", "smooth"],
-      "exampleContext": "To achieve a smooth surface finish, use the draw-filing technique, holding the file at both ends and pushing it sideways along the work."
+      "expectedKeywords": [
+        "draw",
+        "filing",
+        "smooth"
+      ],
+      "exampleContext": "Once the material is flat, you may want to remove the rough file marks. What specific filing technique is used to achieve a very smooth, polished finish?"
     }
   ]
 }

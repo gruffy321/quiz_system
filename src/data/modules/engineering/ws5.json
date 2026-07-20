@@ -10,61 +10,136 @@
       "prompt": "Arrange the steps to be taken if the fire alarm sounds whilst you are using a machine into the correct chronological order.",
       "points": 10,
       "steps": [
-        { "id": "step_1", "text": "Stop the machine immediately" },
-        { "id": "step_2", "text": "Isolate the power supply" },
-        { "id": "step_3", "text": "Leave the building calmly via the nearest safe exit" },
-        { "id": "step_4", "text": "Report to your designated assembly point" }
+        {
+          "id": "step_1",
+          "text": "Stop the machine immediately"
+        },
+        {
+          "id": "step_2",
+          "text": "Isolate the power supply"
+        },
+        {
+          "id": "step_3",
+          "text": "Leave the building calmly via the nearest safe exit"
+        },
+        {
+          "id": "step_4",
+          "text": "Report to your designated assembly point"
+        }
       ],
-      "correctOrder": ["step_1", "step_2", "step_3", "step_4"]
+      "correctOrder": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ],
+      "exampleContext": "Imagine the alarm sounds while you are operating a lathe. What is the very first thing you must do to the machine to leave it safe before you calmly evacuate?"
     },
     {
       "id": "q2_reporting",
       "type": "fill_in_the_blank",
       "prompt": "Explain why it is important to use appropriate fire escape routes and report to your assembly point.",
       "points": 5,
-      "expectedKeywords": ["safe", "headcount", "accounted", "rescue", "clear"]
+      "expectedKeywords": [
+        "safe",
+        "headcount",
+        "accounted",
+        "rescue",
+        "clear"
+      ],
+      "exampleContext": "If the building is evacuated, emergency services need to know if anyone is trapped inside. Why is it vital that you report to the assembly point immediately?"
     },
     {
       "id": "q3_first_aid",
       "type": "fill_in_the_blank",
       "prompt": "Describe the first aid facilities within your specified engineering area.",
       "points": 5,
-      "expectedKeywords": ["box", "kit", "eyewash", "station", "first aider"]
+      "expectedKeywords": [
+        "box",
+        "kit",
+        "eyewash",
+        "station",
+        "first aider"
+      ],
+      "exampleContext": "A colleague has accidentally splashed a mild irritant in their eye. Why is it critical that you already know the location of the nearest eye wash station and first aid kit?"
     },
     {
       "id": "q4_dangerous",
       "type": "fill_in_the_blank",
       "prompt": "State at least three dangerous occurrences or malfunctions which should be reported.",
       "points": 5,
-      "expectedKeywords": ["spill", "leak", "electrical", "guard", "broken", "fire", "smoke"]
+      "expectedKeywords": [
+        "spill",
+        "leak",
+        "electrical",
+        "guard",
+        "broken",
+        "fire",
+        "smoke"
+      ],
+      "exampleContext": "You notice a safety guard on a guillotine is completely broken. Why must dangerous occurrences be reported immediately rather than waiting for the end of your shift?"
     },
     {
       "id": "q5_fire_action",
       "type": "fill_in_the_blank",
       "prompt": "Summarise what action should be taken on discovering a fire.",
       "points": 5,
-      "expectedKeywords": ["alarm", "shout", "call", "evacuate", "tackle", "trained"]
+      "expectedKeywords": [
+        "alarm",
+        "shout",
+        "call",
+        "evacuate",
+        "tackle",
+        "trained"
+      ],
+      "exampleContext": "You are the first to spot a small fire in a waste bin. What is the very first action you must take before you even consider tackling the fire?"
     },
     {
       "id": "q6_extinguishers",
       "type": "fill_in_the_blank",
       "prompt": "Summarise the policy regarding fire extinguishers and fire blankets.",
       "points": 5,
-      "expectedKeywords": ["trained", "safe", "escape", "route", "correct", "type"]
+      "expectedKeywords": [
+        "trained",
+        "safe",
+        "escape",
+        "route",
+        "correct",
+        "type"
+      ],
+      "exampleContext": "You see a fire, but you have never used an extinguisher. Under what strict conditions should you actually attempt to tackle a fire yourself?"
     },
     {
       "id": "q7_causes",
       "type": "fill_in_the_blank",
       "prompt": "What are the most common causes of fire in a workshop environment?",
       "points": 5,
-      "expectedKeywords": ["sparks", "welding", "electrical", "faults", "flammable", "spills", "arson"]
+      "expectedKeywords": [
+        "sparks",
+        "welding",
+        "electrical",
+        "faults",
+        "flammable",
+        "spills",
+        "arson"
+      ],
+      "exampleContext": "Think about the combination of heat, fuel, and oxygen in a workshop. What are the most common everyday hazards that can spark a fire if not managed?"
     },
     {
       "id": "q8_prevention",
       "type": "fill_in_the_blank",
       "prompt": "What can you do to prevent fire from occurring?",
       "points": 5,
-      "expectedKeywords": ["clean", "tidy", "store", "safely", "report", "faults", "ventilation"]
+      "expectedKeywords": [
+        "clean",
+        "tidy",
+        "store",
+        "safely",
+        "report",
+        "faults",
+        "ventilation"
+      ],
+      "exampleContext": "A cluttered workspace is a dangerous workspace. What daily habits can you adopt to ensure your work area does not become a fire hazard?"
     }
   ]
 }

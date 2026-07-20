@@ -93,7 +93,8 @@
           "expectedDraggableId": "drag_8",
           "imageUrl": "/assets/hazards/caution.svg"
         }
-      ]
+      ],
+      "exampleContext": "Consider how you quickly know a bottle contains something dangerous without reading the small print. Why do we use standardized **symbols** to identify hazards like **toxic** or **flammable** materials?"
     },
     {
       "id": "q2_disposal",
@@ -104,7 +105,8 @@
         "prevent",
         "harm",
         "environment"
-      ]
+      ],
+      "exampleContext": "Consider where waste liquids ultimately end up. What impact might hazardous substances have on the local ecosystem if they are simply poured down the drain? Think about how we can **prevent harm** to the **environment**."
     }
   ]
 }

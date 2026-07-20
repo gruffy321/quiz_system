@@ -103,7 +103,8 @@
           "isTarget": false,
           "explanation": "Standard glasses shatter easily upon impact and do not protect against fast-flying debris from the sides."
         }
-      ]
+      ],
+      "exampleContext": "Think about the specific dangers of flying metal chips or heavy falling objects. Why is it essential to select the correct Personal Protective Equipment for the task at hand?"
     },
     {
       "id": "q2_ppe_matching",
@@ -111,32 +112,103 @@
       "prompt": "Plenary Task: Drag a line from each PPE term to the correct icon to verify your understanding.",
       "points": 10,
       "leftItems": [
-        { "id": "text_goggles", "text": "Safety Goggles" },
-        { "id": "text_ear", "text": "Ear Defenders" },
-        { "id": "text_boots", "text": "Safety Boots" },
-        { "id": "text_hivis", "text": "Hi-Vis Vest" },
-        { "id": "text_mask", "text": "Face Mask" },
-        { "id": "text_hardhat", "text": "Hard Hat" },
-        { "id": "text_gloves", "text": "Protective Gloves" }
+        {
+          "id": "text_goggles",
+          "text": "Safety Goggles"
+        },
+        {
+          "id": "text_ear",
+          "text": "Ear Defenders"
+        },
+        {
+          "id": "text_boots",
+          "text": "Safety Boots"
+        },
+        {
+          "id": "text_hivis",
+          "text": "Hi-Vis Vest"
+        },
+        {
+          "id": "text_mask",
+          "text": "Face Mask"
+        },
+        {
+          "id": "text_hardhat",
+          "text": "Hard Hat"
+        },
+        {
+          "id": "text_gloves",
+          "text": "Protective Gloves"
+        }
       ],
       "rightItems": [
-        { "id": "img_goggles", "text": "Safety Goggles", "imageUrl": "/assets/engineering/ws6/ppe-safety-goggles.svg" },
-        { "id": "img_ear", "text": "Ear Defenders", "imageUrl": "/assets/engineering/ws6/ppe-ear-defenders.svg" },
-        { "id": "img_boots", "text": "Safety Boots", "imageUrl": "/assets/engineering/ws6/ppe-steel-toecap-boots.svg" },
-        { "id": "img_hivis", "text": "Hi-Vis Vest", "imageUrl": "/assets/engineering/ws6/ppe-high-vis.svg" },
-        { "id": "img_mask", "text": "Face Mask", "imageUrl": "/assets/engineering/ws6/ppe-face-mask.svg" },
-        { "id": "img_hardhat", "text": "Hard Hat", "imageUrl": "/assets/engineering/ws6/ppe-hard-hat.svg" },
-        { "id": "img_gloves", "text": "Protective Gloves", "imageUrl": "/assets/engineering/ws6/ppe-protective-gloves.svg" }
+        {
+          "id": "img_goggles",
+          "text": "Safety Goggles",
+          "imageUrl": "/assets/engineering/ws6/ppe-safety-goggles.svg"
+        },
+        {
+          "id": "img_ear",
+          "text": "Ear Defenders",
+          "imageUrl": "/assets/engineering/ws6/ppe-ear-defenders.svg"
+        },
+        {
+          "id": "img_boots",
+          "text": "Safety Boots",
+          "imageUrl": "/assets/engineering/ws6/ppe-steel-toecap-boots.svg"
+        },
+        {
+          "id": "img_hivis",
+          "text": "Hi-Vis Vest",
+          "imageUrl": "/assets/engineering/ws6/ppe-high-vis.svg"
+        },
+        {
+          "id": "img_mask",
+          "text": "Face Mask",
+          "imageUrl": "/assets/engineering/ws6/ppe-face-mask.svg"
+        },
+        {
+          "id": "img_hardhat",
+          "text": "Hard Hat",
+          "imageUrl": "/assets/engineering/ws6/ppe-hard-hat.svg"
+        },
+        {
+          "id": "img_gloves",
+          "text": "Protective Gloves",
+          "imageUrl": "/assets/engineering/ws6/ppe-protective-gloves.svg"
+        }
       ],
       "correctMatches": [
-        { "leftId": "text_goggles", "rightId": "img_goggles" },
-        { "leftId": "text_ear", "rightId": "img_ear" },
-        { "leftId": "text_boots", "rightId": "img_boots" },
-        { "leftId": "text_hivis", "rightId": "img_hivis" },
-        { "leftId": "text_mask", "rightId": "img_mask" },
-        { "leftId": "text_hardhat", "rightId": "img_hardhat" },
-        { "leftId": "text_gloves", "rightId": "img_gloves" }
-      ]
+        {
+          "leftId": "text_goggles",
+          "rightId": "img_goggles"
+        },
+        {
+          "leftId": "text_ear",
+          "rightId": "img_ear"
+        },
+        {
+          "leftId": "text_boots",
+          "rightId": "img_boots"
+        },
+        {
+          "leftId": "text_hivis",
+          "rightId": "img_hivis"
+        },
+        {
+          "leftId": "text_mask",
+          "rightId": "img_mask"
+        },
+        {
+          "leftId": "text_hardhat",
+          "rightId": "img_hardhat"
+        },
+        {
+          "leftId": "text_gloves",
+          "rightId": "img_gloves"
+        }
+      ],
+      "exampleContext": "Different hazards require different defenses. How does each specific piece of PPE protect a different vulnerability on your body?"
     }
   ]
 }

@@ -9,56 +9,116 @@
       "type": "fill_in_the_blank",
       "prompt": "Describe the organisational procedures to deal with and report any problems that can affect working relationships.",
       "points": 5,
-      "expectedKeywords": ["report", "supervisor", "manager", "hr", "procedure", "formal"]
+      "expectedKeywords": [
+        "report",
+        "supervisor",
+        "manager",
+        "hr",
+        "procedure",
+        "formal"
+      ],
+      "exampleContext": "You consistently disagree with a colleague on how a process should be run, causing delays. Why do organizations have formal procedures to help resolve such conflicts?"
     },
     {
       "id": "q2_difficulties",
       "type": "fill_in_the_blank",
       "prompt": "Describe the difficulties that can occur in working relationships and how you can resolve them.",
       "points": 5,
-      "expectedKeywords": ["communication", "misunderstanding", "talk", "discuss", "compromise"]
+      "expectedKeywords": [
+        "communication",
+        "misunderstanding",
+        "talk",
+        "discuss",
+        "compromise"
+      ],
+      "exampleContext": "Miscommunication can easily lead to frustration. What are some common difficulties that arise when people fail to communicate effectively in a team?"
     },
     {
       "id": "q3_conflict",
       "type": "fill_in_the_blank",
       "prompt": "Describe the sorts of attitudes and requests that are likely to create conflict or negative responses.",
       "points": 5,
-      "expectedKeywords": ["unreasonable", "rude", "aggressive", "lazy", "disrespect"]
+      "expectedKeywords": [
+        "unreasonable",
+        "rude",
+        "aggressive",
+        "lazy",
+        "disrespect"
+      ],
+      "exampleContext": "Imagine a team member who constantly dismisses other people's ideas aggressively. How can certain attitudes quickly escalate into workplace conflict?"
     },
     {
       "id": "q4_working_time",
       "type": "fill_in_the_blank",
       "prompt": "Describe how The Working Time Regulations affect how you should be treated at work.",
       "points": 5,
-      "expectedKeywords": ["hours", "breaks", "rest", "limit", "time"]
+      "expectedKeywords": [
+        "hours",
+        "breaks",
+        "rest",
+        "limit",
+        "time"
+      ],
+      "exampleContext": "Fatigue can lead to dangerous mistakes in an engineering environment. How do The Working Time Regulations protect you from being overworked?"
     },
     {
       "id": "q5_equality",
       "type": "fill_in_the_blank",
       "prompt": "Describe how The Equality Act affects how you should be treated at work.",
       "points": 5,
-      "expectedKeywords": ["fair", "discrimination", "equal", "opportunity", "race", "gender"]
+      "expectedKeywords": [
+        "fair",
+        "discrimination",
+        "equal",
+        "opportunity",
+        "race",
+        "gender"
+      ],
+      "exampleContext": "A diverse workforce brings different perspectives to problem-solving. How does The Equality Act ensure that everyone is treated fairly regardless of their background?"
     },
     {
       "id": "q6_improving_practices",
       "type": "fill_in_the_blank",
       "prompt": "Describe the importance of making a contribution to improving working practices and procedures.",
       "points": 5,
-      "expectedKeywords": ["efficiency", "safety", "cost", "save", "better", "quality"]
+      "expectedKeywords": [
+        "efficiency",
+        "safety",
+        "cost",
+        "save",
+        "better",
+        "quality"
+      ],
+      "exampleContext": "You notice a way to machine a part 10% faster. Why is it important for employees to proactively suggest improvements to working practices?"
     },
     {
       "id": "q7_initiative",
       "type": "fill_in_the_blank",
       "prompt": "Explain when you should act on your own initiative and when you should ask for help from others.",
       "points": 5,
-      "expectedKeywords": ["trained", "safe", "unsure", "dangerous", "help", "ask"]
+      "expectedKeywords": [
+        "trained",
+        "safe",
+        "unsure",
+        "dangerous",
+        "help",
+        "ask"
+      ],
+      "exampleContext": "You notice a safe, simple way to organize your tools better, but you also notice a complex machine making a strange noise. When is it appropriate to act on your own initiative versus asking for help?"
     },
     {
       "id": "q8_reporting",
       "type": "fill_in_the_blank",
       "prompt": "In the workplace generally, who would you need to report to in the event of a problem?",
       "points": 5,
-      "expectedKeywords": ["supervisor", "manager", "foreman", "leader", "boss"]
+      "expectedKeywords": [
+        "supervisor",
+        "manager",
+        "foreman",
+        "leader",
+        "boss"
+      ],
+      "exampleContext": "You have encountered a problem that you do not have the authority or knowledge to fix. Who is the correct person to report this to in a typical workshop hierarchy?"
     }
   ]
 }

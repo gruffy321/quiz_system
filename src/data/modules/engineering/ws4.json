@@ -9,21 +9,43 @@
       "type": "fill_in_the_blank",
       "prompt": "Describe your responsibilities for spotting hazards in the workplace.",
       "points": 5,
-      "expectedKeywords": ["identify", "report", "supervisor", "remove", "safe"]
+      "expectedKeywords": [
+        "identify",
+        "report",
+        "supervisor",
+        "remove",
+        "safe"
+      ],
+      "exampleContext": "Imagine walking past a spill on the workshop floor. Whose responsibility is it to **identify** and **report** this hazard to keep the area **safe**?"
     },
     {
       "id": "q2_risk_assessments",
       "type": "fill_in_the_blank",
       "prompt": "Describe your responsibilities regarding risk assessments.",
       "points": 5,
-      "expectedKeywords": ["read", "follow", "guidelines", "understand", "comply"]
+      "expectedKeywords": [
+        "read",
+        "follow",
+        "guidelines",
+        "understand",
+        "comply"
+      ],
+      "exampleContext": "Before starting a new, potentially dangerous task, you are given a safety document. What are your responsibilities regarding reading and striving to **understand** and **comply** with these **guidelines**?"
     },
     {
       "id": "q3_coshh",
       "type": "fill_in_the_blank",
       "prompt": "Describe your responsibilities regarding COSHH requirements.",
       "points": 5,
-      "expectedKeywords": ["store", "handle", "chemicals", "safely", "data sheet", "spill"]
+      "expectedKeywords": [
+        "store",
+        "handle",
+        "chemicals",
+        "safely",
+        "data sheet",
+        "spill"
+      ],
+      "exampleContext": "You are tasked with cleaning up using industrial solvents. According to COSHH, how should you **handle** and **store** these **chemicals safely**?"
     },
     {
       "id": "q4_tool_safety_match",
@@ -31,48 +53,106 @@
       "prompt": "Match the safety concept or risk to its corresponding action or source.",
       "points": 15,
       "leftItems": [
-        { "id": "l_blunt", "text": "Blunt or damaged tool" },
-        { "id": "l_wrong_tool", "text": "Using incorrect tool for the job" },
-        { "id": "l_info", "text": "Tool safety information source" }
+        {
+          "id": "l_blunt",
+          "text": "Blunt or damaged tool"
+        },
+        {
+          "id": "l_wrong_tool",
+          "text": "Using incorrect tool for the job"
+        },
+        {
+          "id": "l_info",
+          "text": "Tool safety information source"
+        }
       ],
       "rightItems": [
-        { "id": "r_blunt", "text": "Increases risk of slipping and injury" },
-        { "id": "r_wrong_tool", "text": "Can damage the workpiece or break the tool" },
-        { "id": "r_info", "text": "Manufacturer's manual or supervisor" }
+        {
+          "id": "r_blunt",
+          "text": "Increases risk of slipping and injury"
+        },
+        {
+          "id": "r_wrong_tool",
+          "text": "Can damage the workpiece or break the tool"
+        },
+        {
+          "id": "r_info",
+          "text": "Manufacturer's manual or supervisor"
+        }
       ],
       "correctMatches": [
-        { "leftId": "l_blunt", "rightId": "r_blunt" },
-        { "leftId": "l_wrong_tool", "rightId": "r_wrong_tool" },
-        { "leftId": "l_info", "rightId": "r_info" }
-      ]
+        {
+          "leftId": "l_blunt",
+          "rightId": "r_blunt"
+        },
+        {
+          "leftId": "l_wrong_tool",
+          "rightId": "r_wrong_tool"
+        },
+        {
+          "leftId": "l_info",
+          "rightId": "r_info"
+        }
+      ],
+      "exampleContext": "Think about using a hammer with a loose head. Why does using damaged or the **wrong tool** increase the risk of injury or breaking the tool?"
     },
     {
       "id": "q6_control_lockoff",
       "type": "fill_in_the_blank",
       "prompt": "Give an example of when you would use lock off devices.",
       "points": 5,
-      "expectedKeywords": ["maintenance", "repair", "isolate", "power", "electrical"]
+      "expectedKeywords": [
+        "maintenance",
+        "repair",
+        "isolate",
+        "power",
+        "electrical"
+      ],
+      "exampleContext": "Imagine you need to repair the internal wiring of a large milling machine. When and why would you **isolate** the **electrical power** using lock off devices?"
     },
     {
       "id": "q7_control_fume",
       "type": "fill_in_the_blank",
       "prompt": "Give an example of when you would use fume extraction.",
       "points": 5,
-      "expectedKeywords": ["welding", "soldering", "chemicals", "dust", "gas"]
+      "expectedKeywords": [
+        "welding",
+        "soldering",
+        "chemicals",
+        "dust",
+        "gas"
+      ],
+      "exampleContext": "When joining metals with a TIG welder, harmful gases are produced. In what scenarios must you use fume extraction to protect yourself from **dust** or **gas**?"
     },
     {
       "id": "q8_tool_storage",
       "type": "fill_in_the_blank",
       "prompt": "Explain why tools should be stored in an appropriate manner (e.g. on a tool board).",
       "points": 5,
-      "expectedKeywords": ["damage", "find", "safe", "prevent", "loss", "organise"]
+      "expectedKeywords": [
+        "damage",
+        "find",
+        "safe",
+        "prevent",
+        "loss",
+        "organise"
+      ],
+      "exampleContext": "Imagine needing a specific spanner urgently but the workbench is a mess. Why should tools be organized and stored properly to **prevent loss** or **damage**?"
     },
     {
       "id": "q9_drawings_storage",
       "type": "fill_in_the_blank",
       "prompt": "Why should drawings be returned after use and stored properly?",
       "points": 5,
-      "expectedKeywords": ["damage", "dirt", "loss", "reference", "clean", "safe"]
+      "expectedKeywords": [
+        "damage",
+        "dirt",
+        "loss",
+        "reference",
+        "clean",
+        "safe"
+      ],
+      "exampleContext": "Engineering drawings are expensive to produce and critical for accuracy. Why must they be kept **clean** and stored **safe**ly for future **reference**?"
     }
   ]
 }

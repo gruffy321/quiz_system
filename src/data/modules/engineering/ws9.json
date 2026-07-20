@@ -9,29 +9,59 @@
       "type": "fill_in_the_blank",
       "prompt": "Review the image of the laser cut components. Discuss whether you think this is an efficient use of the material.",
       "points": 5,
-      "expectedKeywords": ["waste", "inefficient", "gap", "space", "close", "nesting"],
-      "imageUrl": "/assets/engineering/ws9/img_1_2.png"
+      "expectedKeywords": [
+        "waste",
+        "inefficient",
+        "gap",
+        "space",
+        "close",
+        "nesting"
+      ],
+      "imageUrl": "/assets/engineering/ws9/img_1_2.png",
+      "exampleContext": "Material costs directly impact the profitability of a project. Why is it critical to minimize waste when cutting components from a sheet of raw material?"
     },
     {
       "id": "q2_process_name",
       "type": "fill_in_the_blank",
       "prompt": "What is the process of arranging parts tightly together to minimise waste called?",
       "points": 5,
-      "expectedKeywords": ["nesting", "nest", "tessellation"]
+      "expectedKeywords": [
+        "nesting",
+        "nest",
+        "tessellation"
+      ],
+      "exampleContext": "Look at how tightly the shapes fit together on the sheet metal. What is the specific term used for arranging parts to maximize material usage?"
     },
     {
       "id": "q3_cadcam",
       "type": "fill_in_the_blank",
       "prompt": "What is this process called when being used in conjunction with CAD/CAM software?",
       "points": 5,
-      "expectedKeywords": ["cnc", "nesting", "software", "auto", "automated", "cam"]
+      "expectedKeywords": [
+        "cnc",
+        "nesting",
+        "software",
+        "auto",
+        "automated",
+        "cam"
+      ],
+      "exampleContext": "Manually calculating the best layout for 50 different parts would take hours. How does using specialized software speed up the nesting process?"
     },
     {
       "id": "q4_marking_out",
       "type": "fill_in_the_blank",
       "prompt": "Explain why the marking out of the material would need to be clear and dimensionally accurate for an assembly.",
       "points": 5,
-      "expectedKeywords": ["fit", "together", "assembly", "waste", "tolerance", "accurate", "mistake"]
+      "expectedKeywords": [
+        "fit",
+        "together",
+        "assembly",
+        "waste",
+        "tolerance",
+        "accurate",
+        "mistake"
+      ],
+      "exampleContext": "If a cut line is smeared or inaccurate, the final part will be scrap. Why is clear and precise marking out the most critical step before cutting begins?"
     }
   ]
 }

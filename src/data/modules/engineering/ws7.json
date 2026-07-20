@@ -9,28 +9,61 @@
       "type": "fill_in_the_blank",
       "prompt": "Briefly describe some of the reasons why companies provide manual handling training.",
       "points": 5,
-      "expectedKeywords": ["prevent", "injury", "law", "legislation", "safe", "back"]
+      "expectedKeywords": [
+        "prevent",
+        "injury",
+        "law",
+        "legislation",
+        "safe",
+        "back"
+      ],
+      "exampleContext": "Improper lifting is a leading cause of workplace absence. Why do companies invest time and money into training employees on safe manual handling techniques?"
     },
     {
       "id": "q2_pallet_truck",
       "type": "fill_in_the_blank",
       "prompt": "Briefly explain when you would use a pallet truck.",
       "points": 5,
-      "expectedKeywords": ["heavy", "load", "pallet", "move", "distance", "floor"]
+      "expectedKeywords": [
+        "heavy",
+        "load",
+        "pallet",
+        "move",
+        "distance",
+        "floor"
+      ],
+      "exampleContext": "Imagine you need to move a stack of 50 heavy boxes across the warehouse floor. Why would a pallet truck be the most appropriate equipment for this task?"
     },
     {
       "id": "q3_sack_barrow",
       "type": "fill_in_the_blank",
       "prompt": "Briefly explain when you would use a sack barrow/truck.",
       "points": 5,
-      "expectedKeywords": ["boxes", "sacks", "awkward", "load", "upright"]
+      "expectedKeywords": [
+        "boxes",
+        "sacks",
+        "awkward",
+        "load",
+        "upright"
+      ],
+      "exampleContext": "You need to move a tall, awkward stack of crates that is difficult to grip. In what situations is a sack barrow more effective than carrying the load by hand?"
     },
     {
       "id": "q4_lifting_technique",
       "type": "fill_in_the_blank",
       "prompt": "Describe the correct technique for moving a box from the ground to a table.",
       "points": 5,
-      "expectedKeywords": ["bend", "knees", "straight", "back", "grip", "close", "lift", "legs"]
+      "expectedKeywords": [
+        "bend",
+        "knees",
+        "straight",
+        "back",
+        "grip",
+        "close",
+        "lift",
+        "legs"
+      ],
+      "exampleContext": "You must pick up a heavy casting from the floor. Describe the step-by-step posture you should adopt to protect your lower back from strain."
     }
   ]
 }

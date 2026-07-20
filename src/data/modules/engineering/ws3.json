@@ -10,53 +10,141 @@
       "prompt": "Identify the drawing type for each image.",
       "points": 10,
       "draggables": [
-        { "id": "isometric", "label": "Isometric" },
-        { "id": "third_angle", "label": "Third Angle Projection" },
-        { "id": "assembly", "label": "Assembly Drawing" },
-        { "id": "general", "label": "General Arrangement" },
-        { "id": "circuit", "label": "Circuit Diagram" },
-        { "id": "wiring", "label": "Wiring Diagram" },
-        { "id": "block", "label": "Block Diagram" },
-        { "id": "fluid", "label": "Fluid Power Diagram" }
+        {
+          "id": "isometric",
+          "label": "Isometric"
+        },
+        {
+          "id": "third_angle",
+          "label": "Third Angle Projection"
+        },
+        {
+          "id": "assembly",
+          "label": "Assembly Drawing"
+        },
+        {
+          "id": "general",
+          "label": "General Arrangement"
+        },
+        {
+          "id": "circuit",
+          "label": "Circuit Diagram"
+        },
+        {
+          "id": "wiring",
+          "label": "Wiring Diagram"
+        },
+        {
+          "id": "block",
+          "label": "Block Diagram"
+        },
+        {
+          "id": "fluid",
+          "label": "Fluid Power Diagram"
+        }
       ],
       "dropZones": [
-        { "id": "dz_iso", "expectedDraggableId": "isometric", "imageUrl": "/assets/engineering/ws3/img_1_2.jpeg" },
-        { "id": "dz_third", "expectedDraggableId": "third_angle", "imageUrl": "/assets/engineering/ws3/img_1_3.png" },
-        { "id": "dz_assm", "expectedDraggableId": "assembly", "imageUrl": "/assets/engineering/ws3/img_2_5.png" },
-        { "id": "dz_gen", "expectedDraggableId": "general", "imageUrl": "/assets/engineering/ws3/img_2_6.jpeg" },
-        { "id": "dz_circ", "expectedDraggableId": "circuit", "imageUrl": "/assets/engineering/ws3/img_2_7.png" },
-        { "id": "dz_wire", "expectedDraggableId": "wiring", "imageUrl": "/assets/engineering/ws3/img_3_9.png" },
-        { "id": "dz_block", "expectedDraggableId": "block", "imageUrl": "/assets/engineering/ws3/img_3_10.png" },
-        { "id": "dz_fluid", "expectedDraggableId": "fluid", "imageUrl": "/assets/engineering/ws3/img_3_11.png" }
-      ]
+        {
+          "id": "dz_iso",
+          "expectedDraggableId": "isometric",
+          "imageUrl": "/assets/engineering/ws3/img_1_2.jpeg"
+        },
+        {
+          "id": "dz_third",
+          "expectedDraggableId": "third_angle",
+          "imageUrl": "/assets/engineering/ws3/img_1_3.png"
+        },
+        {
+          "id": "dz_assm",
+          "expectedDraggableId": "assembly",
+          "imageUrl": "/assets/engineering/ws3/img_2_5.png"
+        },
+        {
+          "id": "dz_gen",
+          "expectedDraggableId": "general",
+          "imageUrl": "/assets/engineering/ws3/img_2_6.jpeg"
+        },
+        {
+          "id": "dz_circ",
+          "expectedDraggableId": "circuit",
+          "imageUrl": "/assets/engineering/ws3/img_2_7.png"
+        },
+        {
+          "id": "dz_wire",
+          "expectedDraggableId": "wiring",
+          "imageUrl": "/assets/engineering/ws3/img_3_9.png"
+        },
+        {
+          "id": "dz_block",
+          "expectedDraggableId": "block",
+          "imageUrl": "/assets/engineering/ws3/img_3_10.png"
+        },
+        {
+          "id": "dz_fluid",
+          "expectedDraggableId": "fluid",
+          "imageUrl": "/assets/engineering/ws3/img_3_11.png"
+        }
+      ],
+      "exampleContext": "Imagine you need to show someone how a product looks in 3D versus how its internal parts fit together. How do different drawing types, like **isometric** or **assembly** drawings, help convey specific information?"
     },
     {
       "id": "q2_tap_chart",
       "type": "fill_in_the_blank",
       "prompt": "What would a Tap/Drill chart be used for?",
       "points": 5,
-      "expectedKeywords": ["select", "drill", "size", "tap", "thread", "hole"]
+      "expectedKeywords": [
+        "select",
+        "drill",
+        "size",
+        "tap",
+        "thread",
+        "hole"
+      ],
+      "exampleContext": "Before cutting an internal thread, a hole must be created. What critical piece of reference information helps you select the exact drill **size** needed so the **tap** cuts the **thread** correctly?"
     },
     {
       "id": "q3_bend_allowance",
       "type": "fill_in_the_blank",
       "prompt": "What would a Bend Allowance formula be used for?",
       "points": 5,
-      "expectedKeywords": ["calculate", "length", "material", "sheet", "metal", "bending"]
+      "expectedKeywords": [
+        "calculate",
+        "length",
+        "material",
+        "sheet",
+        "metal",
+        "bending"
+      ],
+      "exampleContext": "When you bend sheet metal, the outer edge stretches. What calculation must you perform to determine the correct flat **length** of the **material** before **bending** it?"
     },
     {
       "id": "q4_tech_info",
       "type": "fill_in_the_blank",
       "prompt": "Why might technical information be presented in different ways?",
       "points": 5,
-      "expectedKeywords": ["audience", "purpose", "detail", "clarity", "understand"]
+      "expectedKeywords": [
+        "audience",
+        "purpose",
+        "detail",
+        "clarity",
+        "understand"
+      ],
+      "exampleContext": "Think about giving instructions to a machinist versus a customer. Why must technical information be presented differently depending on the **audience** and the **purpose** of the document?"
     },
     {
       "id": "q5_datum",
       "type": "fill_in_the_blank",
       "prompt": "Why is it important to use a fixed common reference point (datum) when dimensioning a drawing?",
       "points": 5,
-      "expectedKeywords": ["accuracy", "accumulation", "errors", "tolerance", "measure", "consistent"]
+      "expectedKeywords": [
+        "accuracy",
+        "accumulation",
+        "errors",
+        "tolerance",
+        "measure",
+        "consistent"
+      ],
+      "exampleContext": "Imagine measuring every part of a component from the previous hole rather than a single edge. How does using a fixed common reference point prevent the **accumulation** of **errors**?"
     }
   ]
 }
