@@ -33,7 +33,8 @@
         "step_3",
         "step_4"
       ],
-      "exampleContext": "Imagine the alarm sounds while you are operating a lathe. What is the very first thing you must do to the machine to leave it safe before you calmly evacuate?"
+      "exampleContext": "Imagine the alarm sounds while you are operating a lathe. What is the very first thing you must do to the machine to leave it safe before you calmly evacuate?",
+      "imageUrl": "/assets/sliced-work-related/fire-alarm.png"
     },
     {
       "id": "q2_reporting",
@@ -47,7 +48,8 @@
         "rescue",
         "clear"
       ],
-      "exampleContext": "If the building is evacuated, emergency services need to know if anyone is trapped inside. Why is it vital that you report to the assembly point immediately?"
+      "exampleContext": "If the building is evacuated, emergency services need to know if anyone is trapped inside. Why is it vital that you report to the assembly point immediately?",
+      "imageUrl": "/assets/sliced-work-related/placeholder-assembly-point.png"
     },
     {
       "id": "q3_first_aid",
@@ -61,7 +63,8 @@
         "station",
         "first aider"
       ],
-      "exampleContext": "A colleague has accidentally splashed a mild irritant in their eye. Why is it critical that you already know the location of the nearest eye wash station and first aid kit?"
+      "exampleContext": "A colleague has accidentally splashed a mild irritant in their eye. Why is it critical that you already know the location of the nearest eye wash station and first aid kit?",
+      "imageUrl": "/assets/sliced-work-related/first-aid-kit.png"
     },
     {
       "id": "q4_dangerous",
@@ -77,7 +80,8 @@
         "fire",
         "smoke"
       ],
-      "exampleContext": "You notice a safety guard on a guillotine is completely broken. Why must dangerous occurrences be reported immediately rather than waiting for the end of your shift?"
+      "exampleContext": "You notice a safety guard on a guillotine is completely broken. Why must dangerous occurrences be reported immediately rather than waiting for the end of your shift?",
+      "imageUrl": "/assets/sliced-work-related/lathe-broken-guard.png"
     },
     {
       "id": "q5_fire_action",
@@ -92,7 +96,8 @@
         "tackle",
         "trained"
       ],
-      "exampleContext": "You are the first to spot a small fire in a waste bin. What is the very first action you must take before you even consider tackling the fire?"
+      "exampleContext": "You are the first to spot a small fire in a waste bin. What is the very first action you must take before you even consider tackling the fire?",
+      "imageUrl": "/assets/sliced-work-related/placeholder-fire-call-point.png"
     },
     {
       "id": "q6_extinguishers",
@@ -107,7 +112,8 @@
         "correct",
         "type"
       ],
-      "exampleContext": "You see a fire, but you have never used an extinguisher. Under what strict conditions should you actually attempt to tackle a fire yourself?"
+      "exampleContext": "You see a fire, but you have never used an extinguisher. Under what strict conditions should you actually attempt to tackle a fire yourself?",
+      "imageUrl": "/assets/sliced-work-related/fire-extinguisher-types.png"
     },
     {
       "id": "q7_causes",
@@ -123,7 +129,8 @@
         "spills",
         "arson"
       ],
-      "exampleContext": "Think about the combination of heat, fuel, and oxygen in a workshop. What are the most common everyday hazards that can spark a fire if not managed?"
+      "exampleContext": "Think about the combination of heat, fuel, and oxygen in a workshop. What are the most common everyday hazards that can spark a fire if not managed?",
+      "imageUrl": "/assets/sliced-work-related/overload-electric-socket.png"
     },
     {
       "id": "q8_prevention",
@@ -139,7 +146,8 @@
         "faults",
         "ventilation"
       ],
-      "exampleContext": "A cluttered workspace is a dangerous workspace. What daily habits can you adopt to ensure your work area does not become a fire hazard?"
+      "exampleContext": "A cluttered workspace is a dangerous workspace. What daily habits can you adopt to ensure your work area does not become a fire hazard?",
+      "imageUrl": "/assets/sliced-work-related/workbench-housekeeping.png"
     }
   ]
 }

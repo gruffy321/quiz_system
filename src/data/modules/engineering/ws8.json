@@ -17,7 +17,8 @@
         "procedure",
         "formal"
       ],
-      "exampleContext": "You consistently disagree with a colleague on how a process should be run, causing delays. Why do organizations have formal procedures to help resolve such conflicts?"
+      "exampleContext": "You consistently disagree with a colleague on how a process should be run, causing delays. Why do organizations have formal procedures to help resolve such conflicts?",
+      "imageUrl": "/assets/sliced-work-related/team-discussion.png"
     },
     {
       "id": "q2_difficulties",
@@ -31,7 +32,8 @@
         "discuss",
         "compromise"
       ],
-      "exampleContext": "Miscommunication can easily lead to frustration. What are some common difficulties that arise when people fail to communicate effectively in a team?"
+      "exampleContext": "Miscommunication can easily lead to frustration. What are some common difficulties that arise when people fail to communicate effectively in a team?",
+      "imageUrl": "/assets/sliced-work-related/handshake.png"
     },
     {
       "id": "q3_conflict",
@@ -45,7 +47,8 @@
         "lazy",
         "disrespect"
       ],
-      "exampleContext": "Imagine a team member who constantly dismisses other people's ideas aggressively. How can certain attitudes quickly escalate into workplace conflict?"
+      "exampleContext": "Imagine a team member who constantly dismisses other people's ideas aggressively. How can certain attitudes quickly escalate into workplace conflict?",
+      "imageUrl": "/assets/sliced-work-related/defensive-language.png"
     },
     {
       "id": "q4_working_time",
@@ -59,7 +62,8 @@
         "limit",
         "time"
       ],
-      "exampleContext": "Fatigue can lead to dangerous mistakes in an engineering environment. How do The Working Time Regulations protect you from being overworked?"
+      "exampleContext": "Fatigue can lead to dangerous mistakes in an engineering environment. How do The Working Time Regulations protect you from being overworked?",
+      "imageUrl": "/assets/sliced-work-related/break-schedule-1.png"
     },
     {
       "id": "q5_equality",
@@ -74,7 +78,8 @@
         "race",
         "gender"
       ],
-      "exampleContext": "A diverse workforce brings different perspectives to problem-solving. How does The Equality Act ensure that everyone is treated fairly regardless of their background?"
+      "exampleContext": "A diverse workforce brings different perspectives to problem-solving. How does The Equality Act ensure that everyone is treated fairly regardless of their background?",
+      "imageUrl": "/assets/sliced-work-related/collaboration.png"
     },
     {
       "id": "q6_improving_practices",
@@ -89,7 +94,8 @@
         "better",
         "quality"
       ],
-      "exampleContext": "You notice a way to machine a part 10% faster. Why is it important for employees to proactively suggest improvements to working practices?"
+      "exampleContext": "You notice a way to machine a part 10% faster. Why is it important for employees to proactively suggest improvements to working practices?",
+      "imageUrl": "/assets/sliced-work-related/suggestion-box.png"
     },
     {
       "id": "q7_initiative",
@@ -104,7 +110,8 @@
         "help",
         "ask"
       ],
-      "exampleContext": "You notice a safe, simple way to organize your tools better, but you also notice a complex machine making a strange noise. When is it appropriate to act on your own initiative versus asking for help?"
+      "exampleContext": "You notice a safe, simple way to organize your tools better, but you also notice a complex machine making a strange noise. When is it appropriate to act on your own initiative versus asking for help?",
+      "imageUrl": "/assets/sliced-work-related/seeking-help.png"
     },
     {
       "id": "q8_reporting",
@@ -118,7 +125,8 @@
         "leader",
         "boss"
       ],
-      "exampleContext": "You have encountered a problem that you do not have the authority or knowledge to fix. Who is the correct person to report this to in a typical workshop hierarchy?"
+      "exampleContext": "You have encountered a problem that you do not have the authority or knowledge to fix. Who is the correct person to report this to in a typical workshop hierarchy?",
+      "imageUrl": "/assets/sliced-work-related/reporting-issues-1.png"
     }
   ]
 }

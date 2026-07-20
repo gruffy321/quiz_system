@@ -100,7 +100,8 @@
         "thread",
         "hole"
       ],
-      "exampleContext": "Before cutting an internal thread, a hole must be created. What critical piece of reference information helps you select the exact drill **size** needed so the **tap** cuts the **thread** correctly?"
+      "exampleContext": "Before cutting an internal thread, a hole must be created. What critical piece of reference information helps you select the exact drill **size** needed so the **tap** cuts the **thread** correctly?",
+      "imageUrl": "/assets/sliced-work-related/tap-drill-chart.png"
     },
     {
       "id": "q3_bend_allowance",
@@ -115,7 +116,8 @@
         "metal",
         "bending"
       ],
-      "exampleContext": "When you bend sheet metal, the outer edge stretches. What calculation must you perform to determine the correct flat **length** of the **material** before **bending** it?"
+      "exampleContext": "When you bend sheet metal, the outer edge stretches. What calculation must you perform to determine the correct flat **length** of the **material** before **bending** it?",
+      "imageUrl": "/assets/sliced-work-related/neautral-axis-bend-rad.png"
     },
     {
       "id": "q4_tech_info",
@@ -129,7 +131,8 @@
         "clarity",
         "understand"
       ],
-      "exampleContext": "Think about giving instructions to a machinist versus a customer. Why must technical information be presented differently depending on the **audience** and the **purpose** of the document?"
+      "exampleContext": "Think about giving instructions to a machinist versus a customer. Why must technical information be presented differently depending on the **audience** and the **purpose** of the document?",
+      "imageUrl": "/assets/sliced-work-related/techincal-docs-1.png"
     },
     {
       "id": "q5_datum",
@@ -144,7 +147,8 @@
         "measure",
         "consistent"
       ],
-      "exampleContext": "Imagine measuring every part of a component from the previous hole rather than a single edge. How does using a fixed common reference point prevent the **accumulation** of **errors**?"
+      "exampleContext": "Imagine measuring every part of a component from the previous hole rather than a single edge. How does using a fixed common reference point prevent the **accumulation** of **errors**?",
+      "imageUrl": "/assets/sliced-work-related/datum-dimensioning.png"
     }
   ]
 }

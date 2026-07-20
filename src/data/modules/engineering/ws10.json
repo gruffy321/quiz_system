@@ -82,7 +82,8 @@
         "cross",
         "two directions"
       ],
-      "exampleContext": "Some files are meant for heavy material removal, while others are for a fine finish. What is the physical difference in the teeth between a single and double cut file?"
+      "exampleContext": "Some files are meant for heavy material removal, while others are for a fine finish. What is the physical difference in the teeth between a single and double cut file?",
+      "imageUrl": "/assets/sliced-work-related/file-teeth-types.png"
     },
     {
       "id": "q3_file_safety",
@@ -96,7 +97,8 @@
         "clean",
         "damage"
       ],
-      "exampleContext": "Before using any hand tool, it must be inspected. What specific parts of a file, especially the handle area, must be checked to ensure it is safe to use?"
+      "exampleContext": "Before using any hand tool, it must be inspected. What specific parts of a file, especially the handle area, must be checked to ensure it is safe to use?",
+      "imageUrl": "/assets/sliced-work-related/hand-file-annotated.png"
     },
     {
       "id": "q4_preparing",
@@ -109,7 +111,8 @@
         "secure",
         "vice"
       ],
-      "exampleContext": "Filing an unsecured piece of metal is dangerous and inaccurate. How should you prepare and secure your workpiece before you begin filing?"
+      "exampleContext": "Filing an unsecured piece of metal is dangerous and inaccurate. How should you prepare and secure your workpiece before you begin filing?",
+      "imageUrl": "/assets/sliced-work-related/clamped-workpiece.png"
     },
     {
       "id": "q5_soft_jaws",
@@ -123,7 +126,8 @@
         "surface",
         "mark"
       ],
-      "exampleContext": "Clamping a finished aluminum part in a steel vice will crush and scratch it. What accessories should you use in the vice to protect delicate workpieces?"
+      "exampleContext": "Clamping a finished aluminum part in a steel vice will crush and scratch it. What accessories should you use in the vice to protect delicate workpieces?",
+      "imageUrl": "/assets/sliced-work-related/soft-jaws.png"
     },
     {
       "id": "q6_tech_flat",
@@ -135,7 +139,8 @@
         "cross",
         "filing"
       ],
-      "exampleContext": "Filing a perfectly flat surface by hand requires a specific technique. What motion and grip should you use to avoid creating a curved surface?"
+      "exampleContext": "Filing a perfectly flat surface by hand requires a specific technique. What motion and grip should you use to avoid creating a curved surface?",
+      "imageUrl": "/assets/sliced-work-related/cross-filing.png"
     },
     {
       "id": "q7_tech_smooth",
@@ -147,7 +152,8 @@
         "filing",
         "smooth"
       ],
-      "exampleContext": "Once the material is flat, you may want to remove the rough file marks. What specific filing technique is used to achieve a very smooth, polished finish?"
+      "exampleContext": "Once the material is flat, you may want to remove the rough file marks. What specific filing technique is used to achieve a very smooth, polished finish?",
+      "imageUrl": "/assets/sliced-work-related/draw-filing.png"
     }
   ]
 }

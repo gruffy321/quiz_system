@@ -30,7 +30,8 @@
         "nest",
         "tessellation"
       ],
-      "exampleContext": "Look at how tightly the shapes fit together on the sheet metal. What is the specific term used for arranging parts to maximize material usage?"
+      "exampleContext": "Look at how tightly the shapes fit together on the sheet metal. What is the specific term used for arranging parts to maximize material usage?",
+      "imageUrl": "/assets/sliced-work-related/tessellated-part-1s.png"
     },
     {
       "id": "q3_cadcam",
@@ -45,7 +46,8 @@
         "automated",
         "cam"
       ],
-      "exampleContext": "Manually calculating the best layout for 50 different parts would take hours. How does using specialized software speed up the nesting process?"
+      "exampleContext": "Manually calculating the best layout for 50 different parts would take hours. How does using specialized software speed up the nesting process?",
+      "imageUrl": "/assets/sliced-work-related/cnc-testing.png"
     },
     {
       "id": "q4_marking_out",
@@ -61,7 +63,8 @@
         "accurate",
         "mistake"
       ],
-      "exampleContext": "If a cut line is smeared or inaccurate, the final part will be scrap. Why is clear and precise marking out the most critical step before cutting begins?"
+      "exampleContext": "If a cut line is smeared or inaccurate, the final part will be scrap. Why is clear and precise marking out the most critical step before cutting begins?",
+      "imageUrl": "/assets/sliced-work-related/scribed-line.png"
     }
   ]
 }

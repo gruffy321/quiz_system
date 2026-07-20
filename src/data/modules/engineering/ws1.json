@@ -106,7 +106,8 @@
         "harm",
         "environment"
       ],
-      "exampleContext": "Consider where waste liquids ultimately end up. What impact might hazardous substances have on the local ecosystem if they are simply poured down the drain? Think about how we can **prevent harm** to the **environment**."
+      "exampleContext": "Consider where waste liquids ultimately end up. What impact might hazardous substances have on the local ecosystem if they are simply poured down the drain? Think about how we can **prevent harm** to the **environment**.",
+      "imageUrl": "/assets/sliced-work-related/chem-waste-disposal.png"
     }
   ]
 }

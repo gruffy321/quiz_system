@@ -16,7 +16,8 @@
         "remove",
         "safe"
       ],
-      "exampleContext": "Imagine walking past a spill on the workshop floor. Whose responsibility is it to **identify** and **report** this hazard to keep the area **safe**?"
+      "exampleContext": "Imagine walking past a spill on the workshop floor. Whose responsibility is it to **identify** and **report** this hazard to keep the area **safe**?",
+      "imageUrl": "/assets/sliced-work-related/spill-report-1.png"
     },
     {
       "id": "q2_risk_assessments",
@@ -30,7 +31,8 @@
         "understand",
         "comply"
       ],
-      "exampleContext": "Before starting a new, potentially dangerous task, you are given a safety document. What are your responsibilities regarding reading and striving to **understand** and **comply** with these **guidelines**?"
+      "exampleContext": "Before starting a new, potentially dangerous task, you are given a safety document. What are your responsibilities regarding reading and striving to **understand** and **comply** with these **guidelines**?",
+      "imageUrl": "/assets/sliced-work-related/risk-ass-review-1.png"
     },
     {
       "id": "q3_coshh",
@@ -45,7 +47,8 @@
         "data sheet",
         "spill"
       ],
-      "exampleContext": "You are tasked with cleaning up using industrial solvents. According to COSHH, how should you **handle** and **store** these **chemicals safely**?"
+      "exampleContext": "You are tasked with cleaning up using industrial solvents. According to COSHH, how should you **handle** and **store** these **chemicals safely**?",
+      "imageUrl": "/assets/sliced-work-related/coshh-store-cabinet.png"
     },
     {
       "id": "q4_tool_safety_match",
@@ -94,7 +97,8 @@
           "rightId": "r_info"
         }
       ],
-      "exampleContext": "Think about using a hammer with a loose head. Why does using damaged or the **wrong tool** increase the risk of injury or breaking the tool?"
+      "exampleContext": "Think about using a hammer with a loose head. Why does using damaged or the **wrong tool** increase the risk of injury or breaking the tool?",
+      "imageUrl": "/assets/sliced-work-related/placeholder-broken-tool.png"
     },
     {
       "id": "q6_control_lockoff",
@@ -108,7 +112,8 @@
         "power",
         "electrical"
       ],
-      "exampleContext": "Imagine you need to repair the internal wiring of a large milling machine. When and why would you **isolate** the **electrical power** using lock off devices?"
+      "exampleContext": "Imagine you need to repair the internal wiring of a large milling machine. When and why would you **isolate** the **electrical power** using lock off devices?",
+      "imageUrl": "/assets/sliced-work-related/lockout.png"
     },
     {
       "id": "q7_control_fume",
@@ -122,7 +127,8 @@
         "dust",
         "gas"
       ],
-      "exampleContext": "When joining metals with a TIG welder, harmful gases are produced. In what scenarios must you use fume extraction to protect yourself from **dust** or **gas**?"
+      "exampleContext": "When joining metals with a TIG welder, harmful gases are produced. In what scenarios must you use fume extraction to protect yourself from **dust** or **gas**?",
+      "imageUrl": "/assets/sliced-work-related/lev-extraciton.png"
     },
     {
       "id": "q8_tool_storage",
@@ -137,7 +143,8 @@
         "loss",
         "organise"
       ],
-      "exampleContext": "Imagine needing a specific spanner urgently but the workbench is a mess. Why should tools be organized and stored properly to **prevent loss** or **damage**?"
+      "exampleContext": "Imagine needing a specific spanner urgently but the workbench is a mess. Why should tools be organized and stored properly to **prevent loss** or **damage**?",
+      "imageUrl": "/assets/sliced-work-related/shadow-board.png"
     },
     {
       "id": "q9_drawings_storage",
@@ -152,7 +159,8 @@
         "clean",
         "safe"
       ],
-      "exampleContext": "Engineering drawings are expensive to produce and critical for accuracy. Why must they be kept **clean** and stored **safe**ly for future **reference**?"
+      "exampleContext": "Engineering drawings are expensive to produce and critical for accuracy. Why must they be kept **clean** and stored **safe**ly for future **reference**?",
+      "imageUrl": "/assets/sliced-work-related/drawing-storage-1.png"
     }
   ]
 }

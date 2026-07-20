@@ -17,7 +17,8 @@
         "safe",
         "back"
       ],
-      "exampleContext": "Improper lifting is a leading cause of workplace absence. Why do companies invest time and money into training employees on safe manual handling techniques?"
+      "exampleContext": "Improper lifting is a leading cause of workplace absence. Why do companies invest time and money into training employees on safe manual handling techniques?",
+      "imageUrl": "/assets/sliced-work-related/manual-handling.png"
     },
     {
       "id": "q2_pallet_truck",
@@ -32,7 +33,8 @@
         "distance",
         "floor"
       ],
-      "exampleContext": "Imagine you need to move a stack of 50 heavy boxes across the warehouse floor. Why would a pallet truck be the most appropriate equipment for this task?"
+      "exampleContext": "Imagine you need to move a stack of 50 heavy boxes across the warehouse floor. Why would a pallet truck be the most appropriate equipment for this task?",
+      "imageUrl": "/assets/sliced-work-related/pallet-truck.png"
     },
     {
       "id": "q3_sack_barrow",
@@ -46,7 +48,8 @@
         "load",
         "upright"
       ],
-      "exampleContext": "You need to move a tall, awkward stack of crates that is difficult to grip. In what situations is a sack barrow more effective than carrying the load by hand?"
+      "exampleContext": "You need to move a tall, awkward stack of crates that is difficult to grip. In what situations is a sack barrow more effective than carrying the load by hand?",
+      "imageUrl": "/assets/sliced-work-related/correct-trasnportation.png"
     },
     {
       "id": "q4_lifting_technique",
@@ -63,7 +66,8 @@
         "lift",
         "legs"
       ],
-      "exampleContext": "You must pick up a heavy casting from the floor. Describe the step-by-step posture you should adopt to protect your lower back from strain."
+      "exampleContext": "You must pick up a heavy casting from the floor. Describe the step-by-step posture you should adopt to protect your lower back from strain.",
+      "imageUrl": "/assets/sliced-work-related/manual-handling.png"
     }
   ]
 }
