@@ -19,6 +19,7 @@ export default async function StudentReportPage({ params }: ReportPageProps) {
     where: { joinCode },
     include: {
       sessions: {
+        orderBy: { startTime: 'desc' },
         include: {
           metrics: true
         }
