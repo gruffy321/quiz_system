@@ -18,12 +18,12 @@
         { "id": "halfround", "label": "Half-round file" }
       ],
       "dropZones": [
-        { "id": "dz_flat", "expectedDraggableId": "flat", "imageUrl": "/assets/engineering/ws10/img_1_2.jpeg" },
-        { "id": "dz_hand", "expectedDraggableId": "hand", "imageUrl": "/assets/engineering/ws10/img_1_3.jpeg" },
-        { "id": "dz_round", "expectedDraggableId": "round", "imageUrl": "/assets/engineering/ws10/img_1_4.jpeg" },
-        { "id": "dz_square", "expectedDraggableId": "square", "imageUrl": "/assets/engineering/ws10/img_1_5.jpeg" },
-        { "id": "dz_threesquare", "expectedDraggableId": "threesquare", "imageUrl": "/assets/engineering/ws10/img_1_6.jpeg" },
-        { "id": "dz_halfround", "expectedDraggableId": "halfround", "imageUrl": "/assets/engineering/ws10/img_1_7.jpeg" }
+        { "id": "dz_flat", "expectedDraggableId": "flat", "imageUrl": "/assets/engineering/ws10/flat-file.svg" },
+        { "id": "dz_hand", "expectedDraggableId": "hand", "imageUrl": "/assets/engineering/ws10/hand-file.svg" },
+        { "id": "dz_round", "expectedDraggableId": "round", "imageUrl": "/assets/engineering/ws10/round-file.svg" },
+        { "id": "dz_square", "expectedDraggableId": "square", "imageUrl": "/assets/engineering/ws10/square-file.svg" },
+        { "id": "dz_threesquare", "expectedDraggableId": "threesquare", "imageUrl": "/assets/engineering/ws10/three-square-file.svg" },
+        { "id": "dz_halfround", "expectedDraggableId": "halfround", "imageUrl": "/assets/engineering/ws10/half-round-file.svg" }
       ]
     },
     {
