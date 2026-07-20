@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { ThemeSwitcher } from "@/components/layout/ThemeSwitcher";
+import { FloatingBackground } from "@/components/ui/FloatingBackground";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem>
+          <FloatingBackground />
           {children}
           <ThemeSwitcher />
         </ThemeProvider>
