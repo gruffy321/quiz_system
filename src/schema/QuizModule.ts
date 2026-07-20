@@ -5,6 +5,8 @@ export interface BaseQuestion {
   type: QuestionType;
   prompt: string;
   points: number;
+  imageUrl?: string;
+  exampleContext?: string;
 }
 
 export interface MultipleChoiceQuestion extends BaseQuestion {
